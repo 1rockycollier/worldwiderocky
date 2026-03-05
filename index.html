@@ -307,6 +307,24 @@ text-align:center;
 .landing,.site{transition:none !important}
 }
 </style>
+<script>
+function enter(){
+  document.getElementById("landing").style.display="none";
+  document.getElementById("site").classList.add("visible");
+}
+function leave(){
+  document.getElementById("landing").style.display="grid";
+  document.getElementById("site").classList.remove("visible");
+}
+function sealNote(){
+  const t=document.querySelector(".postcard-textarea");
+  if(!t.value.trim())return;
+  const btn=document.querySelector(".postcard-send");
+  btn.textContent="sent. ✓";
+  t.disabled=true;t.style.opacity=".4";
+  setTimeout(()=>{btn.textContent="send it →";t.disabled=false;t.style.opacity="1";t.value="";},2500);
+}
+</script>
 </head>
 <body>
 
@@ -614,49 +632,17 @@ text-align:center;
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function enter(){
-  const landing = document.getElementById("landing");
-  const site = document.getElementById("site");
-  landing.style.transition = "opacity .5s ease";
-  landing.style.opacity = "0";
-  setTimeout(()=>{
-    landing.style.display = "none";
-    site.classList.add("visible");
-    site.style.opacity = "0";
-    site.style.transition = "opacity .5s ease";
-    setTimeout(()=>{
-      site.style.opacity = "1";
-      const main = document.querySelector("main.main");
-      if(main){ main.setAttribute("tabindex","-1"); main.focus(); }
-    }, 20);
-  }, 500);
-}
-function leave(){
-  const landing = document.getElementById("landing");
-  const site = document.getElementById("site");
-  site.style.transition = "opacity .4s ease";
-  site.style.opacity = "0";
-  setTimeout(()=>{
-    site.classList.remove("visible");
-    landing.style.display = "grid";
-    landing.style.opacity = "0";
-    landing.style.transition = "opacity .5s ease";
-    setTimeout(()=>{ landing.style.opacity = "1"; }, 20);
-  }, 400);
-}
-function sealNote(){
-  const t=document.querySelector(".postcard-textarea");
-  if(!t.value.trim())return;
-  const btn=document.querySelector(".postcard-send");
-  btn.textContent="sent. ✓";
-  t.disabled=true;t.style.opacity=".4";
-  setTimeout(()=>{btn.textContent="send it →";t.disabled=false;t.style.opacity="1";t.value="";},2500);
-}
+<script>
 (function(){
   const now = new Date();
   const options = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
   const formatted = now.toLocaleDateString('en-US', options).toLowerCase();
   const d = now.toISOString().slice(0,10).replace(/-/g,".");
   const banner = document.getElementById("dateBanner");
-  if(banner) banner.textContent = "today is " + formatted + ". it will never be again. act accordi
+  if(banner) banner.textContent = "today is " + formatted + ". it will never be again. act accordingly. xoxo";
+  const updated = document.getElementById("lastUpdated");
+  if(updated) updated.textContent = "updated " + d;
+})();
+</script>
+</body>
+</html>
