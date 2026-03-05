@@ -6,66 +6,176 @@
 <title>worldwiderocky</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --base:#111110;
-  --surface:#1A1A18;
-  --lift:#222220;
-  --bone:#F0EBE1;
-  --bone-mid:rgba(240,235,225,.5);
-  --bone-faint:rgba(240,235,225,.18);
-  --orange:#FF4F00;
-  --rule:rgba(240,235,225,.07);
-  --sidebar:256px;
+
+*,*::before,*::after{
+margin:0;
+padding:0;
+box-sizing:border-box
 }
-html{height:100%;scroll-behavior:smooth}
-body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-serif;min-height:100vh}
 
-/* ─── LANDING ─── */
-.landing{min-height:100vh;display:grid;grid-template-rows:1fr auto 1fr;padding:0;position:relative;overflow:hidden;width:100%}
-.landing-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 55%,rgba(255,79,0,.04) 0%,transparent 70%);pointer-events:none}
+:root{
+--base:#111110;
+--surface:#1A1A18;
+--lift:#222220;
+--bone:#F0EBE1;
+--bone-mid:rgba(240,235,225,.5);
+--bone-faint:rgba(240,235,225,.18);
+--orange:#FF4F00;
+--rule:rgba(240,235,225,.07);
+--sidebar:256px;
+}
 
-/* grid lines */
-.landing-grid{position:absolute;inset:0;pointer-events:none}
-.landing-grid::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--rule)}
-.landing-grid::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule)}
+body{
+background:var(--base);
+color:var(--bone);
+font-family:"IBM Plex Sans",sans-serif;
+min-height:100vh
+}
 
-/* corners */
-.corner{position:absolute;font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.18em;color:var(--bone-faint);line-height:1.9}
+html{
+height:100%;
+scroll-behavior:smooth
+}
+
+/* ── LANDING ── */
+
+.landing{
+min-height:100vh;
+display:grid;
+grid-template-rows:1fr auto 1fr;
+position:relative;
+overflow:hidden;
+width:100%
+}
+
+.landing-bg{
+position:absolute;
+inset:0;
+background:radial-gradient(ellipse 80% 60% at 50% 55%,rgba(255,79,0,.04) 0%,transparent 70%);
+pointer-events:none
+}
+
+.landing-grid{
+position:absolute;
+inset:0;
+pointer-events:none
+}
+
+.landing-grid::before{
+content:"";
+position:absolute;
+top:0;
+bottom:0;
+left:50%;
+width:1px;
+background:var(--rule)
+}
+
+.landing-grid::after{
+content:"";
+position:absolute;
+left:0;
+right:0;
+top:50%;
+height:1px;
+background:var(--rule)
+}
+
+.corner{
+position:absolute;
+font-family:"IBM Plex Mono",monospace;
+font-size:.38rem;
+letter-spacing:.18em;
+color:var(--bone-faint);
+line-height:1.9
+}
+
 .corner-tl{top:2rem;left:2.5rem}
 .corner-tr{top:2rem;right:2.5rem;text-align:right}
 .corner-bl{bottom:2rem;left:2.5rem}
 .corner-br{bottom:2rem;right:2.5rem;text-align:right}
 
-.landing-top{display:flex;align-items:flex-end;justify-content:center;padding-bottom:3rem}
-.landing-mid{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 2rem}
-.landing-bot{display:flex;align-items:flex-start;justify-content:center;padding-top:3.5rem;gap:3rem}
+.landing-top{
+display:flex;
+align-items:flex-end;
+justify-content:center;
+padding-bottom:3rem
+}
 
-/* stamp */
-.landing-stamp-wrap{margin-bottom:2rem}
+.landing-mid{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 2rem
+}
 
-.landing-wordmark{font-family:"IBM Plex Sans",sans-serif;font-weight:700;font-size:clamp(2.4rem,7vw,5.5rem);letter-spacing:-.03em;color:var(--bone);line-height:1;margin-bottom:1rem}
-.landing-wordmark em{color:var(--orange);font-style:normal}
+.landing-wordmark{
+font-family:"IBM Plex Sans",sans-serif;
+font-weight:700;
+font-size:clamp(2.4rem,7vw,5.5rem);
+letter-spacing:-.03em;
+color:var(--bone);
+line-height:1;
+margin-bottom:1rem
+}
 
-.landing-tagline{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--bone-mid);margin-bottom:3rem}
+.landing-wordmark em{
+color:var(--orange);
+font-style:normal
+}
 
-.landing-nav{display:flex;gap:3rem;justify-content:center;margin-bottom:2.5rem}
-.landing-nav a{font-family:"IBM Plex Mono",monospace;font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;color:var(--orange);text-decoration:none;position:relative;padding-bottom:.3rem;transition:opacity .2s}
-.landing-nav a::after{content:"";position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--orange);transition:width .3s}
-.landing-nav a:hover{opacity:.7}
-.landing-nav a:hover::after{width:100%}
+.landing-tagline{
+font-family:"IBM Plex Mono",monospace;
+font-size:.62rem;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:var(--bone-mid);
+margin-bottom:3rem
+}
 
-.landing-enter{font-family:"IBM Plex Mono",monospace;font-size:.52rem;letter-spacing:.35em;text-transform:uppercase;color:var(--bone);text-decoration:none;border:1px solid var(--rule);padding:.85rem 2.5rem;transition:border-color .25s,color .25s,background .25s;display:inline-flex;align-items:center;gap:.75rem}
-.landing-enter:hover{border-color:var(--orange);background:var(--orange);color:#fff}
+.landing-enter{
+font-family:"IBM Plex Mono",monospace;
+font-size:.52rem;
+letter-spacing:.35em;
+text-transform:uppercase;
+color:var(--bone);
+text-decoration:none;
+border:1px solid var(--rule);
+padding:.85rem 2.5rem;
+display:inline-flex;
+align-items:center;
+gap:.75rem;
+transition:.25s
+}
 
-.landing-bot-link{font-family:"IBM Plex Mono",monospace;font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-faint);text-decoration:none;transition:color .2s}
-.landing-bot-link:hover{color:var(--bone-mid)}
+.landing-enter:hover{
+border-color:var(--orange);
+background:var(--orange);
+color:#fff
+}
 
-/* ─── SITE ─── */
-.site{display:none;min-height:100vh}
+/* ── DATE BANNER ── */
+.date-banner{
+background:var(--orange);
+padding:.55rem 4rem;
+display:flex;align-items:center;justify-content:center;
+}
+.date-banner-text{
+font-family:"IBM Plex Mono",monospace;
+font-size:.46rem;
+letter-spacing:.22em;
+color:#fff;
+text-align:center;
+}
+
+/* ── SITE ── */
+.site{display:none;min-height:100vh;flex-direction:column}
 .site.visible{display:flex}
+.site-inner{display:flex;flex:1}
 
-/* ─── SIDEBAR ─── */
+/* ── SIDEBAR ── */
 .sidebar{width:var(--sidebar);min-height:100vh;background:var(--surface);border-right:1px solid var(--rule);display:flex;flex-direction:column;padding:2rem 1.5rem;position:fixed;top:0;left:0;bottom:0;overflow-y:auto;flex-shrink:0}
 .sidebar-mark{display:flex;align-items:center;gap:.75rem;text-decoration:none;margin-bottom:2.5rem}
 .sidebar-wordmark{font-family:"IBM Plex Sans",sans-serif;font-weight:700;font-size:.9rem;letter-spacing:-.02em;color:var(--bone)}
@@ -88,12 +198,10 @@ body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-s
 .sidebar-link{font-family:"IBM Plex Mono",monospace;font-size:.4rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-faint);text-decoration:none;display:block;margin-bottom:.55rem;transition:color .2s}
 .sidebar-link:hover{color:var(--bone-mid)}
 
-/* ─── MAIN ─── */
+/* ── MAIN ── */
 .main{margin-left:var(--sidebar);flex:1;min-height:100vh;padding:3rem 4rem 5rem;max-width:800px}
 
-/* page header */
 .page-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end}
-.page-header-left{}
 .page-stamp{font-family:"IBM Plex Mono",monospace;font-size:.46rem;letter-spacing:.4em;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem}
 .page-city{font-family:"IBM Plex Sans",sans-serif;font-weight:700;font-size:2rem;letter-spacing:-.025em;color:var(--bone);margin-bottom:.35rem}
 .page-coords{font-family:"IBM Plex Mono",monospace;font-size:.44rem;letter-spacing:.15em;color:var(--bone-faint)}
@@ -106,14 +214,12 @@ body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-s
 .rocky-chip-cta{font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:.72rem;color:var(--orange)}
 .rocky-chip-sub{font-family:"IBM Plex Mono",monospace;font-size:.34rem;letter-spacing:.12em;color:var(--bone-faint)}
 
-/* dispatch */
-.dispatch{background:var(--surface);padding:1.75rem 2rem;margin-bottom:2.5rem;border-left:2px solid var(--orange);position:relative}
+.dispatch{background:var(--surface);padding:1.75rem 2rem;margin-bottom:2.5rem;border-left:2px solid var(--orange)}
 .dispatch-label{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.35em;text-transform:uppercase;color:var(--orange);opacity:.8;margin-bottom:.75rem}
 .dispatch-question{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.7rem;color:var(--bone-faint);font-style:italic;margin-bottom:.5rem}
 .dispatch-text{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.9rem;line-height:2;color:var(--bone-mid)}
 .dispatch-geo{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.18em;color:var(--bone-faint);margin-top:.85rem}
 
-/* ─── POSTCARD ─── */
 .postcard-wrap{margin-bottom:2.5rem}
 .postcard{background:var(--surface);border:1px solid var(--rule);display:grid;grid-template-columns:1fr 1px 160px;min-height:220px;position:relative;overflow:hidden}
 .postcard::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--orange) 0,var(--orange) 18px,transparent 18px,transparent 26px)}
@@ -132,13 +238,11 @@ body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-s
 .postcard-lines{display:flex;flex-direction:column;gap:.65rem;margin-top:.75rem}
 .postcard-line{height:1px;background:var(--rule)}
 
-/* ─── SECTIONS ─── */
 .section{margin-bottom:3rem}
 .section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:1px solid var(--rule)}
-.section-title{font-family:"IBM Plex Mono",monospace;font-size:.44rem;letter-spacing:.4em;text-transform:uppercase;color:var(--bone-faint)}
+.section-title{font-family:"IBM Plex Mono",monospace;font-size:.44rem;letter-spacing:.4em;text-transform:uppercase;color:var(--orange)}
 .section-meta{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.15em;color:var(--orange);opacity:.6}
 
-/* writing */
 .writing-entry{display:flex;gap:1.25rem;padding:1.35rem 0;border-bottom:1px solid var(--rule);text-decoration:none;align-items:flex-start}
 .writing-entry:hover .writing-title{color:var(--orange)}
 .writing-num{font-family:"IBM Plex Mono",monospace;font-size:.44rem;color:var(--bone-faint);padding-top:.2rem;width:18px;flex-shrink:0}
@@ -148,7 +252,6 @@ body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-s
 .writing-geo{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.14em;color:var(--bone-faint)}
 .writing-tag{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);opacity:.6;margin-left:auto;flex-shrink:0;padding-top:.2rem}
 
-/* entries */
 .entry{display:flex;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--rule);text-decoration:none;align-items:flex-start}
 .entry:hover .entry-title{color:var(--orange)}
 .entry-num{font-family:"IBM Plex Mono",monospace;font-size:.42rem;color:var(--bone-faint);padding-top:.15rem;width:18px;flex-shrink:0}
@@ -157,7 +260,6 @@ body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-s
 .entry-sub{font-family:"IBM Plex Mono",monospace;font-size:.4rem;letter-spacing:.1em;color:var(--bone-faint);line-height:1.85}
 .entry-tag{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);opacity:.6;margin-left:auto;flex-shrink:0;padding-top:.15rem}
 
-/* books */
 .books-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule)}
 .book-col{background:var(--base);padding:1.25rem 1rem}
 .book-col-label{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);opacity:.7;margin-bottom:.85rem}
@@ -167,7 +269,6 @@ body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-s
 .book-author{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.08em;color:var(--bone-faint)}
 .book-note{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.67rem;color:var(--bone-mid);margin-top:.3rem;line-height:1.65;font-style:italic}
 
-/* crescendo */
 .crescendo{background:var(--surface);border:1px solid var(--rule);padding:1.75rem 2rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:2rem;position:relative;overflow:hidden}
 .crescendo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--orange)}
 .crescendo-info{flex:1}
@@ -178,30 +279,18 @@ body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-s
 .crescendo-btn{font-family:"IBM Plex Mono",monospace;font-size:.46rem;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);text-decoration:none;border:1px solid rgba(255,79,0,.3);padding:.65rem 1.25rem;flex-shrink:0;transition:background .2s}
 .crescendo-btn:hover{background:rgba(255,79,0,.08)}
 
-/* tracks */
-.track{display:flex;align-items:center;gap:1.1rem;padding:.85rem 0;border-bottom:1px solid var(--rule);text-decoration:none;transition:opacity .2s}
-.track:hover{opacity:.55}
-.track-n{font-family:"IBM Plex Mono",monospace;font-size:.42rem;color:var(--orange);opacity:.45;width:16px;flex-shrink:0}
-.track-info{flex:1}
-.track-title{font-family:"IBM Plex Sans",sans-serif;font-weight:400;font-size:.78rem;color:var(--bone);margin-bottom:.15rem}
-.track-artist{font-family:"IBM Plex Mono",monospace;font-size:.4rem;letter-spacing:.08em;color:var(--bone-faint)}
-.track-dur{font-family:"IBM Plex Mono",monospace;font-size:.4rem;color:var(--bone-faint)}
-.tidal-more{display:inline-flex;align-items:center;gap:.5rem;font-family:"IBM Plex Mono",monospace;font-size:.44rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-mid);text-decoration:none;margin-top:.85rem;transition:color .2s}
-.tidal-more:hover{color:var(--orange)}
-
-/* places */
 .places-intro{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.78rem;font-style:italic;color:var(--bone-mid);line-height:1.85;margin-bottom:1.25rem}
 .place-row{display:flex;align-items:flex-start;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--rule)}
 .place-geo{font-family:"IBM Plex Mono",monospace;font-size:.4rem;letter-spacing:.08em;color:var(--orange);opacity:.55;padding-top:.15rem;flex-shrink:0;width:72px;line-height:1.85}
 .place-body{flex:1}
 .place-name{font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:.82rem;color:var(--bone);margin-bottom:.2rem}
-.place-type{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-faint);margin-bottom:.35rem}
-.place-note{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.73rem;color:var(--bone-mid);line-height:1.75}
+.place-type{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,235,225,.45);margin-bottom:.35rem}
+.place-note{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.73rem;color:rgba(240,235,225,.65);line-height:1.75}
 .place-tag{font-family:"IBM Plex Mono",monospace;font-size:.36rem;letter-spacing:.14em;color:var(--orange);opacity:.5;margin-left:auto;flex-shrink:0;padding-top:.15rem}
 
-/* mobile */
 @media(max-width:768px){
   .site.visible{flex-direction:column}
+  .site-inner{flex-direction:column}
   .sidebar{position:relative;width:100%;min-height:auto;border-right:none;border-bottom:1px solid var(--rule)}
   .main{margin-left:0;padding:2rem 1.5rem}
   .books-row{grid-template-columns:1fr}
@@ -211,6 +300,7 @@ body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-s
   .rocky-chip{display:none}
   .corner-tr,.corner-bl{display:none}
   .crescendo{flex-direction:column;align-items:flex-start;gap:1rem}
+  .date-banner{padding:.55rem 1.5rem}
 }
 </style>
 </head>
@@ -218,6 +308,7 @@ body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-s
 
 <!-- ── LANDING ── -->
 <div class="landing" id="landing">
+
   <div class="landing-bg"></div>
   <div class="landing-grid"></div>
 
@@ -227,254 +318,296 @@ body{background:var(--base);color:var(--bone);font-family:"IBM Plex Sans",sans-s
   <div class="corner corner-br">filed from<br/>everywhere</div>
 
   <div class="landing-top">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="82" height="82">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="120" height="120">
       <defs>
-        <filter id="r"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.2" xChannelSelector="R" yChannelSelector="G"/></filter>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap');
+          @keyframes stampIn {
+            from { opacity:0; transform:scale(.82) rotate(-8deg); transform-origin:150px 150px; }
+            to   { opacity:1; transform:scale(1)   rotate(0deg);  transform-origin:150px 150px; }
+          }
+          @keyframes spinRing {
+            from { transform:rotate(0deg);   transform-origin:150px 150px; }
+            to   { transform:rotate(360deg); transform-origin:150px 150px; }
+          }
+          @keyframes breathe {
+            0%,100% { opacity:.55; }
+            50%     { opacity:.2;  }
+          }
+          .stamp-root  { animation:stampIn 1.2s cubic-bezier(.16,1,.3,1) both; }
+          .ring-spin   { animation:spinRing 28s linear infinite; transform-origin:150px 150px; }
+          .ring-breathe{ animation:breathe 4s ease-in-out infinite; }
+        </style>
+        <filter id="stamp-f" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="turbulence" baseFrequency="0.065" numOctaves="3" seed="8" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <filter id="roughen-f" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="3" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
       </defs>
-      <circle cx="100" cy="100" r="90" fill="none" stroke="#FF4F00" stroke-width="2.5" filter="url(#r)" opacity=".8"/>
-      <circle cx="100" cy="100" r="76" fill="none" stroke="#FF4F00" stroke-width="1" filter="url(#r)" opacity=".4"/>
-      <path id="ta" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
-      <text font-family="'IBM Plex Mono',monospace" font-size="9" font-weight="400" fill="#FF4F00" letter-spacing="5" filter="url(#r)" opacity=".75">
-        <textPath href="#ta" startOffset="50%" text-anchor="middle">WORLDWIDEROCKY</textPath>
-      </text>
-      <path id="ba" d="M 30,108 A 76,76 0 0,0 170,108" fill="none"/>
-      <text font-family="'IBM Plex Mono',monospace" font-size="6.5" font-weight="300" fill="#FF4F00" letter-spacing="3" filter="url(#r)" opacity=".5">
-        <textPath href="#ba" startOffset="50%" text-anchor="middle">34.85°N · 82.39°W</textPath>
-      </text>
-      <text x="100" y="108" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="34" fill="#F0EBE1" text-anchor="middle" dominant-baseline="middle" filter="url(#r)" opacity=".92">wwR</text>
+
+      <g class="stamp-root">
+
+        <!-- outer ring + arc text — spins -->
+        <g class="ring-spin">
+          <circle cx="150" cy="150" r="138" fill="none" stroke="#F0EBE1" stroke-width="4.5" filter="url(#roughen-f)" opacity=".88"/>
+          <path id="sTopArc" d="M 38,150 A 112,112 0 0,1 262,150" fill="none"/>
+          <text font-family="'Space Mono',monospace" font-size="13.5" font-weight="700" fill="#F0EBE1" letter-spacing="4.5" opacity=".85" filter="url(#roughen-f)">
+            <textPath href="#sTopArc" startOffset="50%" text-anchor="middle">WORLDWIDEROCKY</textPath>
+          </text>
+          <path id="sBotArc" d="M 38,150 A 112,112 0 0,0 262,150" fill="none"/>
+          <text font-family="'Space Mono',monospace" font-size="11" font-weight="400" fill="#F0EBE1" letter-spacing="3.5" opacity=".7" filter="url(#roughen-f)">
+            <textPath href="#sBotArc" startOffset="50%" text-anchor="middle">EST. 2024 · GSP · GLOBAL</textPath>
+          </text>
+          <rect x="22" y="147" width="10" height="2" rx="1" fill="#F0EBE1" opacity=".55" transform="rotate(-2,27,148)"/>
+          <rect x="268" y="147" width="10" height="2" rx="1" fill="#F0EBE1" opacity=".55" transform="rotate(2,273,148)"/>
+        </g>
+
+        <!-- inner circle — breathes -->
+        <circle cx="150" cy="150" r="120" fill="none" stroke="#F0EBE1" stroke-width="1.5" filter="url(#roughen-f)" class="ring-breathe"/>
+
+        <!-- wwR center — ww cream, R orange -->
+        <text x="150" y="162"
+          font-family="'DM Serif Display',Georgia,serif"
+          font-size="82" font-style="italic"
+          text-anchor="middle" dominant-baseline="middle"
+          letter-spacing="-3" filter="url(#stamp-f)">
+          <tspan fill="#F0EBE1" opacity=".92">ww</tspan><tspan fill="#FF4F00" opacity=".96">R</tspan>
+        </text>
+
+        <!-- coordinates -->
+        <text x="150" y="196"
+          font-family="'Space Mono',monospace"
+          font-size="9.5" fill="#F0EBE1"
+          text-anchor="middle" letter-spacing="2.5"
+          opacity=".5" filter="url(#roughen-f)">34.85°N · 82.39°W</text>
+
+      </g>
     </svg>
   </div>
 
   <div class="landing-mid">
     <div class="landing-wordmark">world<em>wide</em>rocky.</div>
     <p class="landing-tagline">you found me. finally.</p>
-    <a href="#" class="landing-enter" onclick="enter(); return false;">start here &nbsp;&rarr;</a>
+    <a href="#" class="landing-enter" onclick="enter(); return false;">welcome in :) &nbsp;&rarr;</a>
   </div>
 
-  <div class="landing-bot"></div>
 </div>
 
 <!-- ── SITE ── -->
 <div class="site" id="site">
-  <aside class="sidebar">
-    <a href="#" class="sidebar-mark" onclick="leave(); return false;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="26" height="26">
-        <circle cx="100" cy="100" r="90" fill="none" stroke="#FF4F00" stroke-width="3" opacity=".7"/>
-        <text x="100" y="107" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="50" fill="#F0EBE1" text-anchor="middle" dominant-baseline="middle">wwR</text>
-      </svg>
-      <span class="sidebar-wordmark">world<em>wide</em>rocky.</span>
-    </a>
 
-    <p class="nav-label">cities</p>
-    <ul class="stamp-list">
-      <li class="stamp-item active">
-        <span class="stamp-code">GSP</span><span class="stamp-city">Greenville</span><span class="stamp-dot"></span>
-      </li>
-      <li class="stamp-item">
-        <span class="stamp-code">HTX</span><span class="stamp-city">Houston</span><span class="stamp-pill upcoming">upcoming</span>
-      </li>
-      <li class="stamp-item">
-        <span class="stamp-code">MEX</span><span class="stamp-city">Mexico City</span><span class="stamp-pill soon">soon</span>
-      </li>
-      <li class="stamp-item">
-        <span class="stamp-code">MAD</span><span class="stamp-city">Madrid</span><span class="stamp-pill soon">soon</span>
-      </li>
-      <li class="stamp-item">
-        <span class="stamp-code">PMI</span><span class="stamp-city">Mallorca</span><span class="stamp-pill soon">soon</span>
-      </li>
-    </ul>
+  <div class="date-banner">
+    <span class="date-banner-text" id="dateBanner">today is —. it will never be again. act accordingly. xoxo</span>
+  </div>
 
-    <div class="sidebar-foot">
-      <a href="https://instagram.com/1worldwiderocky" target="_blank" rel="noopener" class="sidebar-link">instagram</a>
-      <a href="https://goodcompanyleisureclub.substack.com/" target="_blank" rel="noopener" class="sidebar-link">substack</a>
-      <a href="https://racquelcollier.com" target="_blank" rel="noopener" class="sidebar-link">racquelcollier.com</a>
-    </div>
-  </aside>
+  <div class="site-inner">
+    <aside class="sidebar">
+      <a href="#" class="sidebar-mark" onclick="leave(); return false;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="26" height="26">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#FF4F00" stroke-width="3" opacity=".7"/>
+          <text x="100" y="107" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="50" fill="#F0EBE1" text-anchor="middle" dominant-baseline="middle">wwR</text>
+        </svg>
+        <span class="sidebar-wordmark">world<em>wide</em>rocky.</span>
+      </a>
 
-  <main class="main">
+      <p class="nav-label">cities</p>
+      <ul class="stamp-list">
+        <li class="stamp-item">
+          <span class="stamp-code">PDX</span><span class="stamp-city">Portland</span><span class="stamp-pill soon">last stop</span>
+        </li>
+        <li class="stamp-item active">
+          <span class="stamp-code">GSP</span><span class="stamp-city">Greenville</span><span class="stamp-dot"></span>
+        </li>
+        <li class="stamp-item">
+          <span class="stamp-code">HTX</span><span class="stamp-city">Houston</span><span class="stamp-pill upcoming">upcoming</span>
+        </li>
+        <li class="stamp-item">
+          <span class="stamp-code">NYC</span><span class="stamp-city">New York</span><span class="stamp-pill soon">soon</span>
+        </li>
+      </ul>
 
-    <!-- PAGE HEADER -->
-    <div class="page-header">
-      <div class="page-header-left">
-        <p class="page-stamp">GSP · home base</p>
-        <h1 class="page-city">Greenville, SC.</h1>
-        <p class="page-coords">34.8526 N · 82.3940 W · UTC−5</p>
-        <p class="page-updated"><span class="page-updated-dot"></span><span id="lastUpdated">updated today</span></p>
+      <div class="sidebar-foot">
+        <a href="https://instagram.com/1worldwiderocky" target="_blank" rel="noopener" class="sidebar-link">instagram</a>
+        <a href="https://goodcompanyleisureclub.substack.com/" target="_blank" rel="noopener" class="sidebar-link">substack</a>
+        <a href="https://racquelcollier.com" target="_blank" rel="noopener" class="sidebar-link">racquelcollier.com</a>
       </div>
-      <div class="page-header-right">
-        <a href="mailto:rocky@worldwiderocky.com" class="rocky-chip">
-          <span class="rocky-chip-label">want to connect?</span>
-          <span class="rocky-chip-cta">email rocky</span>
-          <span class="rocky-chip-sub">24hr reply · always</span>
+    </aside>
+
+    <main class="main">
+
+      <div class="page-header">
+        <div class="page-header-left">
+          <p class="page-stamp">GSP · home base</p>
+          <h1 class="page-city">Greenville, SC.</h1>
+          <p class="page-coords">34.8526 N · 82.3940 W · UTC−5</p>
+          <p class="page-updated"><span class="page-updated-dot"></span><span id="lastUpdated">updated today</span></p>
+        </div>
+        <div class="page-header-right">
+          <a href="mailto:rocky@worldwiderocky.com" class="rocky-chip">
+            <span class="rocky-chip-label">want to connect?</span>
+            <span class="rocky-chip-cta">email rocky</span>
+            <span class="rocky-chip-sub">24hr reply · always</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="dispatch">
+        <p class="dispatch-label">dispatch · what's on my mind</p>
+        <p class="dispatch-question">syncronicities in life</p>
+        <p class="dispatch-text">currently exploring the one language of the universe after rereading the alchemist and returning from the vipassana experience. listen and be present.</p>
+        <p class="dispatch-geo">GSP · 2026.03.05 · wwR</p>
+      </div>
+
+      <div class="postcard-wrap" id="note">
+        <div class="postcard">
+          <div class="postcard-left">
+            <p class="postcard-label">leave a note · weekly prompt</p>
+            <p class="postcard-prompt">What did you feel the last time a place surprised you?</p>
+            <p class="postcard-date">week of 2026.03.03</p>
+            <textarea class="postcard-textarea" placeholder="write something here..."></textarea>
+            <button class="postcard-send" onclick="sealNote()">send it &nbsp;&rarr;</button>
+          </div>
+          <div class="postcard-divider"></div>
+          <div class="postcard-right">
+            <div class="postcard-stamp-area">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="52" height="52" opacity=".35">
+                <circle cx="100" cy="100" r="90" fill="none" stroke="#FF4F00" stroke-width="3"/>
+                <text x="100" y="107" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="50" fill="#F0EBE1" text-anchor="middle" dominant-baseline="middle">wwR</text>
+              </svg>
+            </div>
+            <div class="postcard-lines">
+              <div class="postcard-line"></div>
+              <div class="postcard-line"></div>
+              <div class="postcard-line"></div>
+            </div>
+            <p class="postcard-address">worldwiderocky.com<br/>GSP · Greenville, SC<br/>34.8526 N · 82.3940 W</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="read">
+        <div class="section-header">
+          <span class="section-title">writing</span>
+          <span class="section-meta">02 essays</span>
+        </div>
+        <a href="https://goodcompanyleisureclub.substack.com/p/always-go-to-the-airport" target="_blank" rel="noopener" class="writing-entry">
+          <span class="writing-num">01</span>
+          <div class="writing-body">
+            <p class="writing-title">Always Go to the Airport</p>
+            <p class="writing-excerpt">On showing up, even when you're not sure what you're arriving for.</p>
+            <p class="writing-geo">GSP · wwR</p>
+          </div>
+          <span class="writing-tag">essay</span>
+        </a>
+        <a href="https://goodcompanyleisureclub.substack.com/p/the-caramelization-of-life" target="_blank" rel="noopener" class="writing-entry">
+          <span class="writing-num">02</span>
+          <div class="writing-body">
+            <p class="writing-title">The Caramelization of Life</p>
+            <p class="writing-excerpt">Some things only get good under sustained heat and patience.</p>
+            <p class="writing-geo">GSP · wwR</p>
+          </div>
+          <span class="writing-tag">essay</span>
         </a>
       </div>
-    </div>
 
-    <!-- DISPATCH -->
-    <div class="dispatch">
-      <p class="dispatch-label">dispatch · what's on my mind</p>
-      <p class="dispatch-question">question i'm chasing: what does it mean to build a place people remember?</p>
-      <p class="dispatch-text">Week 7 of The Artist's Way. Something is loosening. I bought worldwiderocky.com because I made it my IG handle and thought it would be fun for world building. Turns out it might be the most honest thing I've made.</p>
-      <p class="dispatch-geo">GSP · 2026.03.03 · wwR</p>
-    </div>
-
-    <!-- POSTCARD / LEAVE A NOTE -->
-    <div class="postcard-wrap" id="note">
-      <div class="postcard">
-        <div class="postcard-left">
-          <p class="postcard-label">leave a note · weekly prompt</p>
-          <p class="postcard-prompt">What did you feel the last time a place surprised you?</p>
-          <p class="postcard-date">week of 2026.03.03</p>
-          <textarea class="postcard-textarea" placeholder="write something here..."></textarea>
-          <button class="postcard-send" onclick="sealNote()">send it &nbsp;&rarr;</button>
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">my revolving shelf</span>
         </div>
-        <div class="postcard-divider"></div>
-        <div class="postcard-right">
-          <div class="postcard-stamp-area">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="52" height="52" opacity=".35">
-              <circle cx="100" cy="100" r="90" fill="none" stroke="#FF4F00" stroke-width="3"/>
-              <text x="100" y="107" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="50" fill="#F0EBE1" text-anchor="middle" dominant-baseline="middle">wwR</text>
-            </svg>
+        <div class="books-row">
+          <div class="book-col">
+            <p class="book-col-label">now reading</p>
+            <div class="book-item">
+              <p class="book-title">Rock My Soul</p>
+              <p class="book-author">bell hooks</p>
+            </div>
+            <div class="book-item">
+              <p class="book-title">Giovanni's Room</p>
+              <p class="book-author">James Baldwin</p>
+            </div>
+            <div class="book-item">
+              <p class="book-title">Dust Tracks on a Road</p>
+              <p class="book-author">Zora Neale Hurston</p>
+            </div>
           </div>
-          <div class="postcard-lines">
-            <div class="postcard-line"></div>
-            <div class="postcard-line"></div>
-            <div class="postcard-line"></div>
+          <div class="book-col">
+            <p class="book-col-label">up next</p>
+            <div class="book-item">
+              <p class="book-title">East of Eden</p>
+              <p class="book-author">John Steinbeck</p>
+            </div>
+            <div class="book-item">
+              <p class="book-title">Salvation</p>
+              <p class="book-author">bell hooks</p>
+            </div>
           </div>
-          <p class="postcard-address">worldwiderocky.com<br/>GSP · Greenville, SC<br/>34.8526 N · 82.3940 W</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- WRITING -->
-    <div class="section" id="read">
-      <div class="section-header">
-        <span class="section-title">writing</span>
-        <span class="section-meta">02 essays</span>
-      </div>
-      <a href="https://goodcompanyleisureclub.substack.com/" target="_blank" rel="noopener" class="writing-entry">
-        <span class="writing-num">01</span>
-        <div class="writing-body">
-          <p class="writing-title">When Your Name Interrupts the Conversation</p>
-          <p class="writing-excerpt">On being called Rocky in a room that did not expect you and what it means to take up space with something as simple as what people call you.</p>
-          <p class="writing-geo">GSP · Jan 2025 · 6 min · wwR</p>
-        </div>
-        <span class="writing-tag">essay</span>
-      </a>
-      <a href="https://goodcompanyleisureclub.substack.com/" target="_blank" rel="noopener" class="writing-entry">
-        <span class="writing-num">02</span>
-        <div class="writing-body">
-          <p class="writing-title">I Don't Know Your Name but I Remember You</p>
-          <p class="writing-excerpt">The stranger who made a room feel like home.</p>
-          <p class="writing-geo">GSP · Feb 2025 · 4 min · wwR</p>
-        </div>
-        <span class="writing-tag">essay</span>
-      </a>
-    </div>
-
-    <!-- BOOKS -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-title">books</span>
-      </div>
-      <div class="books-row">
-        <div class="book-col">
-          <p class="book-col-label">now reading</p>
-          <div class="book-item">
-            <p class="book-title">Their Eyes Were Watching God</p>
-            <p class="book-author">Zora Neale Hurston</p>
-            <p class="book-note">Chapter 9. Janie is becoming.</p>
-          </div>
-          <div class="book-item">
-            <p class="book-title">The Artist's Way</p>
-            <p class="book-author">Julia Cameron</p>
-            <p class="book-note">Week 7. The one loosening things.</p>
-          </div>
-        </div>
-        <div class="book-col">
-          <p class="book-col-label">up next</p>
-          <div class="book-item">
-            <p class="book-title">The Garden of Eden</p>
-            <p class="book-author">Ernest Hemingway</p>
-          </div>
-        </div>
-        <div class="book-col">
-          <p class="book-col-label">recently finished</p>
-          <div class="book-item">
-            <p class="book-title">All About Love</p>
-            <p class="book-author">bell hooks</p>
-          </div>
-          <div class="book-item">
-            <p class="book-title">Beloved</p>
-            <p class="book-author">Toni Morrison</p>
+          <div class="book-col">
+            <p class="book-col-label">recently finished</p>
+            <div class="book-item">
+              <p class="book-title">Orbital</p>
+              <p class="book-author">Samantha Harvey</p>
+            </div>
+            <div class="book-item">
+              <p class="book-title">The Alchemist</p>
+              <p class="book-author">Paulo Coelho</p>
+              <p class="book-note">reread. the language of the universe is speaking.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- PLAYING -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-title">playing · media in rotation</span>
-        <span class="section-meta">03 entries</span>
-      </div>
-      <a href="#" class="entry"><span class="entry-num">01</span><div class="entry-body"><p class="entry-title">When I Get Home</p><p class="entry-sub">Solange · film · watch it like you'd read a poem · GSP · 2026 · wwR</p></div><span class="entry-tag">film</span></a>
-      <a href="#" class="entry"><span class="entry-num">02</span><div class="entry-body"><p class="entry-title">Somebody Somewhere</p><p class="entry-sub">HBO · show · about finding your people in unexpected places · GSP · 2026 · wwR</p></div><span class="entry-tag">show</span></a>
-      <a href="#" class="entry"><span class="entry-num">03</span><div class="entry-body"><p class="entry-title">Abstract: The Art of Design</p><p class="entry-sub">Netflix · doc · the Ilse Crawford episode changed something · GSP · 2026 · wwR</p></div><span class="entry-tag">doc</span></a>
-    </div>
-
-    <!-- SOUNDS -->
-    <div class="section" id="listen">
-      <div class="section-header">
-        <span class="section-title">sounds</span>
-        <span class="section-meta">05 tracks</span>
-      </div>
-      <div class="crescendo">
-        <div class="crescendo-info">
-          <p class="crescendo-label">listening experience · Sawdust Coffee</p>
-          <p class="crescendo-title">CRESCENDO</p>
-          <p class="crescendo-desc">12 people. 2 hours. 19 songs exploring triumph — devotional, resilient, celebratory, communal. December 2025.</p>
-          <p class="crescendo-geo">GSP · 2025.12 · wwR · the pilot</p>
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">media · in rotation</span>
+          <span class="section-meta">03 entries</span>
         </div>
-        <a href="https://tidal.com/playlist/25bc21ef-052b-41ce-848b-e41ae0b0dd73" target="_blank" rel="noopener" class="crescendo-btn">listen &nbsp;&rarr;</a>
+        <a href="#" class="entry"><span class="entry-num">01</span><div class="entry-body"><p class="entry-title">When I Get Home</p><p class="entry-sub">Solange · film · watch it like you'd read a poem · GSP · 2026 · wwR</p></div><span class="entry-tag">film</span></a>
+        <a href="#" class="entry"><span class="entry-num">02</span><div class="entry-body"><p class="entry-title">Somebody Somewhere</p><p class="entry-sub">HBO · show · about finding your people in unexpected places · GSP · 2026 · wwR</p></div><span class="entry-tag">show</span></a>
+        <a href="#" class="entry"><span class="entry-num">03</span><div class="entry-body"><p class="entry-title">Abstract: The Art of Design</p><p class="entry-sub">Netflix · doc · the Ilse Crawford episode changed something · GSP · 2026 · wwR</p></div><span class="entry-tag">doc</span></a>
       </div>
-      <a href="https://tidal.com/playlist/25bc21ef-052b-41ce-848b-e41ae0b0dd73" target="_blank" rel="noopener" class="track"><span class="track-n">01</span><div class="track-info"><p class="track-title">Cranes in the Sky</p><p class="track-artist">Solange</p></div><span class="track-dur">4:43</span></a>
-      <a href="https://tidal.com/playlist/25bc21ef-052b-41ce-848b-e41ae0b0dd73" target="_blank" rel="noopener" class="track"><span class="track-n">02</span><div class="track-info"><p class="track-title">Nikes</p><p class="track-artist">Frank Ocean</p></div><span class="track-dur">5:14</span></a>
-      <a href="https://tidal.com/playlist/25bc21ef-052b-41ce-848b-e41ae0b0dd73" target="_blank" rel="noopener" class="track"><span class="track-n">03</span><div class="track-info"><p class="track-title">Purple Rain</p><p class="track-artist">Prince</p></div><span class="track-dur">8:41</span></a>
-      <a href="https://tidal.com/playlist/25bc21ef-052b-41ce-848b-e41ae0b0dd73" target="_blank" rel="noopener" class="track"><span class="track-n">04</span><div class="track-info"><p class="track-title">All I Need</p><p class="track-artist">Radiohead</p></div><span class="track-dur">3:49</span></a>
-      <a href="https://tidal.com/playlist/25bc21ef-052b-41ce-848b-e41ae0b0dd73" target="_blank" rel="noopener" class="track"><span class="track-n">05</span><div class="track-info"><p class="track-title">Jogà</p><p class="track-artist">Björk</p></div><span class="track-dur">5:02</span></a>
-      <a href="https://tidal.com/playlist/25bc21ef-052b-41ce-848b-e41ae0b0dd73" target="_blank" rel="noopener" class="tidal-more">full playlist on tidal &nbsp;&rarr;</a>
-    </div>
 
-    <!-- PLACES -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-title">places · filed from wherever</span>
+      <div class="section" id="listen">
+        <div class="section-header">
+          <span class="section-title">sounds</span>
+        </div>
+        <div class="crescendo">
+          <div class="crescendo-info">
+            <p class="crescendo-label">listening experience · Sawdust Coffee</p>
+            <p class="crescendo-title">CRESCENDO</p>
+            <p class="crescendo-desc">12 people. 2 hours. 19 songs exploring triumph — devotional, resilient, celebratory, communal. December 2024.</p>
+            <p class="crescendo-geo">GSP · 2024.12 · wwR · the pilot</p>
+          </div>
+          <a href="https://tidal.com/playlist/25bc21ef-052b-41ce-848b-e41ae0b0dd73" target="_blank" rel="noopener" class="crescendo-btn">listen &nbsp;&rarr;</a>
+        </div>
       </div>
-      <p class="places-intro">The world is the archive. A running log of spots worth returning to.</p>
-      <div class="place-row">
-        <div class="place-geo">34.85°N<br/>82.39°W</div>
-        <div class="place-body"><p class="place-name">Sawdust Coffee</p><p class="place-type">coffee · Greenville, SC</p><p class="place-note">Where CRESCENDO happened. The room holds things.</p></div>
-        <span class="place-tag">GSP · wwR</span>
-      </div>
-      <div class="place-row">
-        <div class="place-geo">34.85°N<br/>82.40°W</div>
-        <div class="place-body"><p class="place-name">Falls Park</p><p class="place-type">outdoors · Greenville, SC</p><p class="place-note">Best thinking happens on the bridge. Go early.</p></div>
-        <span class="place-tag">GSP · wwR</span>
-      </div>
-      <div class="place-row">
-        <div class="place-geo">34.85°N<br/>82.39°W</div>
-        <div class="place-body"><p class="place-name">Methodical Coffee</p><p class="place-type">coffee · Greenville, SC</p><p class="place-note">For when you need to sit with something for a while.</p></div>
-        <span class="place-tag">GSP · wwR</span>
-      </div>
-      <div class="place-row">
-        <div class="place-geo">34.84°N<br/>82.40°W</div>
-        <div class="place-body"><p class="place-name">The Bohemian</p><p class="place-type">bar · Greenville, SC</p><p class="place-note">Good light, good people, good conversations.</p></div>
-        <span class="place-tag">GSP · wwR</span>
-      </div>
-    </div>
 
-  </main>
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">places · filed from wherever</span>
+        </div>
+        <p class="places-intro">The world is the archive. A running log of spots worth returning to.</p>
+        <div class="place-row">
+          <div class="place-geo">34.85°N<br/>82.39°W</div>
+          <div class="place-body"><p class="place-name">Sawdust Coffee</p><p class="place-type">coffee · Greenville, SC</p><p class="place-note">Where CRESCENDO happened. The room holds things.</p></div>
+          <span class="place-tag">GSP · wwR</span>
+        </div>
+        <div class="place-row">
+          <div class="place-geo">34.85°N<br/>82.39°W</div>
+          <div class="place-body"><p class="place-name">Mercato Coffee</p><p class="place-type">coffee · Greenville, SC</p><p class="place-note">Good place to duck off.</p></div>
+          <span class="place-tag">GSP · wwR</span>
+        </div>
+        <div class="place-row">
+          <div class="place-geo">34.85°N<br/>82.40°W</div>
+          <div class="place-body"><p class="place-name">Sauna House</p><p class="place-type">wellness · Greenville, SC</p><p class="place-note">For recovery. Come out a different person.</p></div>
+          <span class="place-tag">GSP · wwR</span>
+        </div>
+      </div>
+
+    </main>
+  </div>
 </div>
 
 <script>
@@ -483,7 +616,7 @@ function enter(){
   document.getElementById("site").classList.add("visible");
 }
 function leave(){
-  document.getElementById("landing").style.display="flex";
+  document.getElementById("landing").style.display="grid";
   document.getElementById("site").classList.remove("visible");
 }
 function sealNote(){
@@ -495,10 +628,14 @@ function sealNote(){
   setTimeout(()=>{btn.textContent="send it →";t.disabled=false;t.style.opacity="1";t.value="";},2500);
 }
 (function(){
-  const el=document.getElementById("lastUpdated");
-  if(!el)return;
-  const d=new Date().toISOString().slice(0,10).replace(/-/g,".");
-  el.textContent="updated "+d;
+  const now = new Date();
+  const options = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+  const formatted = now.toLocaleDateString('en-US', options).toLowerCase();
+  const d = now.toISOString().slice(0,10).replace(/-/g,".");
+  const banner = document.getElementById("dateBanner");
+  if(banner) banner.textContent = "today is " + formatted + ". it will never be again. act accordingly. xoxo";
+  const updated = document.getElementById("lastUpdated");
+  if(updated) updated.textContent = "updated " + d;
 })();
 </script>
 </body>
