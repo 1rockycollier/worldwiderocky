@@ -302,19 +302,77 @@ text-align:center;
   .crescendo{flex-direction:column;align-items:flex-start;gap:1rem}
   .date-banner{padding:.55rem 1.5rem}
 }
+/* ── SCROLL REVEAL ── */
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .65s ease, transform .65s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ── HOVER LIFT ── */
+.writing-entry{
+  transition:transform .2s ease, background .2s ease;
+}
+.writing-entry:hover{
+  transform:translateY(-2px);
+  background:var(--surface);
+}
+.entry{
+  transition:transform .2s ease, background .2s ease;
+}
+.entry:hover{
+  transform:translateY(-2px);
+  background:var(--surface);
+}
+
+/* ── AMBIENT GLOW ── */
+@keyframes glowShift{
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.site-glow{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background: radial-gradient(ellipse 70% 50% at 30% 60%, rgba(255,79,0,.03) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 40% at 70% 30%, rgba(255,79,0,.02) 0%, transparent 70%);
+  animation: glowShift 12s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+.site-inner{ position:relative; z-index:1; }
+.date-banner{ position:relative; z-index:1; }
+
 @media (prefers-reduced-motion: reduce){
-*{scroll-behavior:auto !important}
-.landing,.site{transition:none !important}
+  *{scroll-behavior:auto !important}
+  .landing,.site{transition:none !important}
+  .reveal{opacity:1;transform:none;transition:none}
+  .writing-entry,.entry{transition:none}
+  .site-glow{animation:none}
 }
 </style>
 <script>
 function enter(){
   document.getElementById("landing").style.display="none";
   document.getElementById("site").classList.add("visible");
+  initReveal();
 }
 function leave(){
   document.getElementById("landing").style.display="grid";
   document.getElementById("site").classList.remove("visible");
+}
+function initReveal(){
+  const els = document.querySelectorAll(".reveal");
+  if(!els.length) return;
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("visible"); obs.unobserve(e.target); } });
+  },{threshold:0.1});
+  els.forEach(el=>obs.observe(el));
 }
 function sealNote(){
   const t=document.querySelector(".postcard-textarea");
@@ -420,6 +478,7 @@ function sealNote(){
 
 <!-- ── SITE ── -->
 <div class="site" id="site">
+  <div class="site-glow"></div>
 
   <div class="date-banner">
     <span class="date-banner-text" id="dateBanner">today is —. it will never be again. act accordingly. xoxo</span>
@@ -476,14 +535,14 @@ function sealNote(){
         </div>
       </div>
 
-      <div class="dispatch">
+      <div class="dispatch reveal">
         <p class="dispatch-label">dispatch · what's on my mind</p>
         <p class="dispatch-question">syncronicities in life</p>
         <p class="dispatch-text">currently exploring the one language of the universe after rereading the alchemist and returning from the vipassana experience. listen and be present.</p>
         <p class="dispatch-geo">GSP · 2026.03.05 · wwR</p>
       </div>
 
-      <div class="postcard-wrap" id="note">
+      <div class="postcard-wrap reveal" id="note">
         <div class="postcard">
           <div class="postcard-left">
             <p class="postcard-label">leave a note · weekly prompt</p>
@@ -510,7 +569,7 @@ function sealNote(){
         </div>
       </div>
 
-      <div class="section" id="read">
+      <div class="section reveal" id="read">
         <div class="section-header">
           <span class="section-title">writing</span>
           <span class="section-meta">02 essays</span>
@@ -535,7 +594,7 @@ function sealNote(){
         </a>
       </div>
 
-      <div class="section">
+      <div class="section reveal">
         <div class="section-header">
           <span class="section-title">my revolving shelf</span>
         </div>
@@ -581,7 +640,7 @@ function sealNote(){
         </div>
       </div>
 
-      <div class="section">
+      <div class="section reveal">
         <div class="section-header">
           <span class="section-title">media · in rotation</span>
           <span class="section-meta">03 entries</span>
@@ -591,7 +650,7 @@ function sealNote(){
         <a href="#" class="entry"><span class="entry-num">03</span><div class="entry-body"><p class="entry-title">Abstract: The Art of Design</p><p class="entry-sub">Netflix · doc · the Ilse Crawford episode changed something · GSP · 2026 · wwR</p></div><span class="entry-tag">doc</span></a>
       </div>
 
-      <div class="section" id="listen">
+      <div class="section reveal" id="listen">
         <div class="section-header">
           <span class="section-title">sounds</span>
         </div>
@@ -606,7 +665,7 @@ function sealNote(){
         </div>
       </div>
 
-      <div class="section">
+      <div class="section reveal">
         <div class="section-header">
           <span class="section-title">places · filed from wherever</span>
         </div>
