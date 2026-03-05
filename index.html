@@ -302,6 +302,10 @@ text-align:center;
   .crescendo{flex-direction:column;align-items:flex-start;gap:1rem}
   .date-banner{padding:.55rem 1.5rem}
 }
+@media (prefers-reduced-motion: reduce){
+*{scroll-behavior:auto !important}
+.landing,.site{transition:none !important}
+}
 </style>
 </head>
 <body>
@@ -612,12 +616,34 @@ text-align:center;
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function enter(){
-  document.getElementById("landing").style.display="none";
-  document.getElementById("site").classList.add("visible");
+  const landing = document.getElementById("landing");
+  const site = document.getElementById("site");
+  landing.style.transition = "opacity .5s ease";
+  landing.style.opacity = "0";
+  setTimeout(()=>{
+    landing.style.display = "none";
+    site.classList.add("visible");
+    site.style.opacity = "0";
+    site.style.transition = "opacity .5s ease";
+    setTimeout(()=>{
+      site.style.opacity = "1";
+      const main = document.querySelector("main.main");
+      if(main){ main.setAttribute("tabindex","-1"); main.focus(); }
+    }, 20);
+  }, 500);
 }
 function leave(){
-  document.getElementById("landing").style.display="grid";
-  document.getElementById("site").classList.remove("visible");
+  const landing = document.getElementById("landing");
+  const site = document.getElementById("site");
+  site.style.transition = "opacity .4s ease";
+  site.style.opacity = "0";
+  setTimeout(()=>{
+    site.classList.remove("visible");
+    landing.style.display = "grid";
+    landing.style.opacity = "0";
+    landing.style.transition = "opacity .5s ease";
+    setTimeout(()=>{ landing.style.opacity = "1"; }, 20);
+  }, 400);
 }
 function sealNote(){
   const t=document.querySelector(".postcard-textarea");
