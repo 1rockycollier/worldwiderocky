@@ -161,6 +161,7 @@ color:#fff
 background:var(--orange);
 padding:.55rem 4rem;
 display:flex;align-items:center;justify-content:center;
+text-align:center;
 }
 .date-banner-text{
 font-family:"IBM Plex Mono",monospace;
@@ -168,6 +169,8 @@ font-size:.46rem;
 letter-spacing:.22em;
 color:#fff;
 text-align:center;
+display:block;
+width:100%;
 }
 
 /* ── SITE ── */
@@ -542,32 +545,6 @@ function sealNote(){
         <p class="dispatch-geo">GSP · 2026.03.05 · wwR</p>
       </div>
 
-      <div class="postcard-wrap reveal" id="note">
-        <div class="postcard">
-          <div class="postcard-left">
-            <p class="postcard-label">leave a note · weekly prompt</p>
-            <p class="postcard-prompt">What did you feel the last time a place surprised you?</p>
-            <p class="postcard-date">week of 2026.03.03</p>
-            <textarea class="postcard-textarea" placeholder="write something here..."></textarea>
-            <button class="postcard-send" onclick="sealNote()">send it &nbsp;&rarr;</button>
-          </div>
-          <div class="postcard-divider"></div>
-          <div class="postcard-right">
-            <div class="postcard-stamp-area">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="52" height="52" opacity=".35">
-                <circle cx="100" cy="100" r="90" fill="none" stroke="#FF4F00" stroke-width="3"/>
-                <text x="100" y="107" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="50" fill="#F0EBE1" text-anchor="middle" dominant-baseline="middle">wwR</text>
-              </svg>
-            </div>
-            <div class="postcard-lines">
-              <div class="postcard-line"></div>
-              <div class="postcard-line"></div>
-              <div class="postcard-line"></div>
-            </div>
-            <p class="postcard-address">worldwiderocky.com<br/>GSP · Greenville, SC<br/>34.8526 N · 82.3940 W</p>
-          </div>
-        </div>
-      </div>
 
       <div class="section reveal" id="read">
         <div class="section-header">
@@ -671,19 +648,46 @@ function sealNote(){
         </div>
         <p class="places-intro">The world is the archive. A running log of spots worth returning to.</p>
         <div class="place-row">
-          <div class="place-geo">34.85°N<br/>82.39°W</div>
-          <div class="place-body"><p class="place-name">Sawdust Coffee</p><p class="place-type">coffee · Greenville, SC</p><p class="place-note">Where CRESCENDO happened. The room holds things.</p></div>
-          <span class="place-tag">GSP · wwR</span>
-        </div>
-        <div class="place-row">
-          <div class="place-geo">34.85°N<br/>82.39°W</div>
-          <div class="place-body"><p class="place-name">Mercato Coffee</p><p class="place-type">coffee · Greenville, SC</p><p class="place-note">Good place to duck off.</p></div>
-          <span class="place-tag">GSP · wwR</span>
+          <div class="place-geo">33.47°N<br/>81.97°W</div>
+          <div class="place-body"><p class="place-name">Augusta 20</p><p class="place-type">coffee · Augusta, GA</p><p class="place-note">home away from home.</p></div>
+          <span class="place-tag">AGS · wwR</span>
         </div>
         <div class="place-row">
           <div class="place-geo">34.85°N<br/>82.40°W</div>
           <div class="place-body"><p class="place-name">Sauna House</p><p class="place-type">wellness · Greenville, SC</p><p class="place-note">For recovery. Come out a different person.</p></div>
           <span class="place-tag">GSP · wwR</span>
+        </div>
+        <div class="place-row">
+          <div class="place-geo">34.85°N<br/>82.39°W</div>
+          <div class="place-body"><p class="place-name">Sawdust Coffee</p><p class="place-type">coffee · Greenville, SC</p><p class="place-note">Where CRESCENDO happened. The room holds things.</p></div>
+          <span class="place-tag">GSP · wwR</span>
+        </div>
+      </div>
+
+      <div class="postcard-wrap reveal" id="note">
+        <div class="postcard">
+          <div class="postcard-left">
+            <p class="postcard-label">leave a note · weekly prompt</p>
+            <p class="postcard-prompt">tell me a secret.</p>
+            <p class="postcard-date">week of 2026.03.03</p>
+            <textarea class="postcard-textarea" placeholder="write something here..."></textarea>
+            <button class="postcard-send" onclick="sealNote()">send to rocky :) &nbsp;&rarr;</button>
+          </div>
+          <div class="postcard-divider"></div>
+          <div class="postcard-right">
+            <div class="postcard-stamp-area">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="52" height="52" opacity=".35">
+                <circle cx="100" cy="100" r="90" fill="none" stroke="#FF4F00" stroke-width="3"/>
+                <text x="100" y="107" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="50" fill="#F0EBE1" text-anchor="middle" dominant-baseline="middle">wwR</text>
+              </svg>
+            </div>
+            <div class="postcard-lines">
+              <div class="postcard-line"></div>
+              <div class="postcard-line"></div>
+              <div class="postcard-line"></div>
+            </div>
+            <p class="postcard-address">worldwiderocky.com<br/>GSP · Greenville, SC<br/>34.8526 N · 82.3940 W</p>
+          </div>
         </div>
       </div>
 
