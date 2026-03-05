@@ -86,7 +86,7 @@ position:absolute;
 font-family:"IBM Plex Mono",monospace;
 font-size:.38rem;
 letter-spacing:.18em;
-color:var(--bone-faint);
+color:var(--bone);
 line-height:1.9
 }
 
@@ -195,7 +195,7 @@ text-align:center;
 .stamp-pill.upcoming{color:var(--orange);opacity:.6}
 .stamp-pill.soon{color:var(--bone-faint)}
 .sidebar-foot{margin-top:auto;padding-top:1.75rem;border-top:1px solid var(--rule)}
-.sidebar-link{font-family:"IBM Plex Mono",monospace;font-size:.4rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-faint);text-decoration:none;display:block;margin-bottom:.55rem;transition:color .2s}
+.sidebar-link{font-family:"IBM Plex Mono",monospace;font-size:.4rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone);text-decoration:none;display:block;margin-bottom:.55rem;transition:color .2s}
 .sidebar-link:hover{color:var(--bone-mid)}
 
 /* ── MAIN ── */
@@ -446,7 +446,7 @@ text-align:center;
           <p class="page-updated"><span class="page-updated-dot"></span><span id="lastUpdated">updated today</span></p>
         </div>
         <div class="page-header-right">
-          <a href="mailto:rocky@worldwiderocky.com" class="rocky-chip">
+          <a href="/cdn-cgi/l/email-protection#6d1f020e06142d1a021f01091a0409081f020e0614430e0200" class="rocky-chip">
             <span class="rocky-chip-label">want to connect?</span>
             <span class="rocky-chip-cta">email rocky</span>
             <span class="rocky-chip-sub">24hr reply · always</span>
@@ -610,7 +610,7 @@ text-align:center;
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function enter(){
   document.getElementById("landing").style.display="none";
   document.getElementById("site").classList.add("visible");
@@ -633,10 +633,4 @@ function sealNote(){
   const formatted = now.toLocaleDateString('en-US', options).toLowerCase();
   const d = now.toISOString().slice(0,10).replace(/-/g,".");
   const banner = document.getElementById("dateBanner");
-  if(banner) banner.textContent = "today is " + formatted + ". it will never be again. act accordingly. xoxo";
-  const updated = document.getElementById("lastUpdated");
-  if(updated) updated.textContent = "updated " + d;
-})();
-</script>
-</body>
-</html>
+  if(banner) banner.textContent = "today is " + formatted + ". it will never be again. act accordi
