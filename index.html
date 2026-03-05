@@ -241,7 +241,28 @@ width:100%;
 .postcard-lines{display:flex;flex-direction:column;gap:.65rem;margin-top:.75rem}
 .postcard-line{height:1px;background:var(--rule)}
 
-.section{margin-bottom:3rem}
+.section-divider{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin:2.5rem 0;
+  opacity:1;
+}
+.section-divider::before,.section-divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(255,79,0,.25), transparent);
+}
+.section-divider-mark{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.36rem;
+  letter-spacing:.35em;
+  color:var(--orange);
+  white-space:nowrap;
+  opacity:.7;
+}
+.section{margin-bottom:0}
 .section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:1px solid var(--rule)}
 .section-title{font-family:"IBM Plex Mono",monospace;font-size:.44rem;letter-spacing:.4em;text-transform:uppercase;color:var(--orange)}
 .section-meta{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.15em;color:var(--orange);opacity:.6}
@@ -546,6 +567,7 @@ function sealNote(){
       </div>
 
 
+      <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
       <div class="section reveal" id="read">
         <div class="section-header">
           <span class="section-title">writing</span>
@@ -571,6 +593,7 @@ function sealNote(){
         </a>
       </div>
 
+      <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
       <div class="section reveal">
         <div class="section-header">
           <span class="section-title">my revolving shelf</span>
@@ -617,6 +640,7 @@ function sealNote(){
         </div>
       </div>
 
+      <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
       <div class="section reveal">
         <div class="section-header">
           <span class="section-title">media · in rotation</span>
@@ -627,6 +651,7 @@ function sealNote(){
         <a href="#" class="entry"><span class="entry-num">03</span><div class="entry-body"><p class="entry-title">Abstract: The Art of Design</p><p class="entry-sub">Netflix · doc · the Ilse Crawford episode changed something · GSP · 2026 · wwR</p></div><span class="entry-tag">doc</span></a>
       </div>
 
+      <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
       <div class="section reveal" id="listen">
         <div class="section-header">
           <span class="section-title">sounds</span>
@@ -642,6 +667,7 @@ function sealNote(){
         </div>
       </div>
 
+      <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
       <div class="section reveal">
         <div class="section-header">
           <span class="section-title">places · filed from wherever</span>
@@ -649,8 +675,8 @@ function sealNote(){
         <p class="places-intro">The world is the archive. A running log of spots worth returning to.</p>
         <div class="place-row">
           <div class="place-geo">33.47°N<br/>81.97°W</div>
-          <div class="place-body"><p class="place-name">Augusta 20</p><p class="place-type">coffee · Augusta, GA</p><p class="place-note">home away from home.</p></div>
-          <span class="place-tag">AGS · wwR</span>
+          <div class="place-body"><p class="place-name">Augusta 20</p><p class="place-type">coffee · Greenville, SC</p><p class="place-note">home away from home.</p></div>
+          <span class="place-tag">GSP · wwR</span>
         </div>
         <div class="place-row">
           <div class="place-geo">34.85°N<br/>82.40°W</div>
@@ -664,6 +690,7 @@ function sealNote(){
         </div>
       </div>
 
+      <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
       <div class="postcard-wrap reveal" id="note">
         <div class="postcard">
           <div class="postcard-left">
