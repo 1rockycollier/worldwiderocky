@@ -301,6 +301,7 @@ color:#1a1a1a
   opacity:.7;
   animation:dividerGlow 4s ease-in-out infinite;
 }
+.mobile-about{display:none;}
 .mobile-landings-divider{display:none;}
 .mobile-landings{display:none;}
 
@@ -736,8 +737,19 @@ color:#1a1a1a
   .page-header{grid-template-columns:1fr}
   .corner-tr,.corner-bl{display:none}
   .crescendo{flex-direction:column;align-items:flex-start;gap:1rem}
-  .mobile-landings{display:block;}
+  .mobile-about{
+    display:block;
+    text-align:center;
+    padding:2rem 1rem;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    margin-bottom:0;
+  }
+  .mobile-about-hi{font-family:"Caveat",cursive;font-size:1.8rem;color:var(--bone);opacity:.75;margin-bottom:.5rem;}
+  .mobile-about-text{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.82rem;line-height:1.8;color:var(--bone-mid);}
+  .mobile-about-link{font-family:"IBM Plex Mono",monospace;font-size:.45rem;letter-spacing:.2em;color:var(--orange);text-decoration:none;display:inline-block;margin-top:.75rem;}
   .mobile-landings-divider{display:flex;}
+  .mobile-landings{display:block;}
   .sidebar-landings-label{display:none;}
   .sidebar-landings-list{display:none;}
   .sidebar-foot{display:none;}
@@ -1026,6 +1038,13 @@ function sealNote(){
       <div class="site-intro reveal">
         <p class="site-intro-script">a record of what moves me.</p>
         <p class="site-intro-sub">media, places, and moments of leisure</p>
+      </div>
+
+      <!-- MOBILE ONLY ABOUT -->
+      <div class="mobile-about">
+        <p class="mobile-about-hi">hi, i'm rocky.</p>
+        <p class="mobile-about-text">a real estate developer, speaker, and collector of good experiences. this is where i keep what inspires me — the books, films, places, and moments that shape how i see the world.</p>
+        <a href="https://racquelcollier.com" target="_blank" rel="noopener" class="mobile-about-link">more on my work at racquelcollier.com →</a>
       </div>
 
 
