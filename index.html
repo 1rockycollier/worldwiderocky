@@ -3,20 +3,50 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>worldwiderocky</title>
+<title>worldwiderocky · Racquel Collier</title>
+<meta name="description" content="Racquel Collier — worldwiderocky. A record of what moves me. Media, places, and moments of leisure. Real estate developer, speaker, and creative based in Greenville, SC."/>
+<meta name="author" content="Racquel Collier"/>
+<meta name="keywords" content="Racquel Collier, worldwiderocky, Rocky Collier, real estate developer, Greenville SC, third place strategist, speaker, Caliber Real Estate"/>
+<link rel="canonical" href="https://worldwiderocky.com"/>
 
 <!-- Open Graph -->
-<meta property="og:title" content="worldwiderocky."/>
-<meta property="og:description" content="a record of what moves me. media, places, and moments of leisure."/>
+<meta property="og:title" content="worldwiderocky · Racquel Collier"/>
+<meta property="og:description" content="Racquel Collier — a record of what moves me. Media, places, and moments of leisure."/>
 <meta property="og:image" content="https://worldwiderocky.com/og-image.png"/>
 <meta property="og:url" content="https://worldwiderocky.com"/>
 <meta property="og:type" content="website"/>
 
 <!-- Twitter/X -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="worldwiderocky."/>
-<meta name="twitter:description" content="a record of what moves me. media, places, and moments of leisure."/>
+<meta name="twitter:title" content="worldwiderocky · Racquel Collier"/>
+<meta name="twitter:description" content="Racquel Collier — a record of what moves me. Media, places, and moments of leisure."/>
 <meta name="twitter:image" content="https://worldwiderocky.com/og-image.png"/>
+
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Racquel Collier",
+  "alternateName": "Rocky Collier",
+  "url": "https://worldwiderocky.com",
+  "sameAs": [
+    "https://instagram.com/1worldwiderocky",
+    "https://goodcompanyleisureclub.substack.com",
+    "https://racquelcollier.com"
+  ],
+  "jobTitle": "Real Estate Developer, Speaker",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Caliber Real Estate"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Greenville",
+    "addressRegion": "SC"
+  }
+}
+</script>
 
 <!-- Favicon using inline SVG -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%232B2B2B'/%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%23F0EBE1' stroke-width='4'/%3E%3Ctext x='100' y='108' font-family='Georgia,serif' font-size='72' font-style='italic' text-anchor='middle' dominant-baseline='middle' letter-spacing='-2'%3E%3Ctspan fill='%23F0EBE1'%3Eww%3C/tspan%3E%3Ctspan fill='%23C8FF00'%3ER%3C/tspan%3E%3C/text%3E%3C/svg%3E"/>
@@ -158,6 +188,12 @@ color:#1a1a1a
 
 /* ── SIDEBAR ── */
 .sidebar{width:var(--sidebar);min-height:100vh;background:var(--surface);border-right:1px solid var(--rule);display:flex;flex-direction:column;padding:2rem 1.5rem;position:fixed;top:0;left:0;bottom:0;overflow-y:auto;flex-shrink:0}
+.sidebar-mark:hover .sidebar-stamp{animation:stampSpin .7s cubic-bezier(.4,0,.2,1) 1;}
+.sidebar-stamp{transform-origin:center;display:block;}
+@keyframes stampSpin{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(360deg)}
+}
 .sidebar-mark{display:flex;align-items:center;gap:.75rem;text-decoration:none;margin-bottom:2.5rem}
 .sidebar-wordmark{font-family:"IBM Plex Sans",sans-serif;font-weight:700;font-size:.9rem;letter-spacing:-.02em;color:var(--bone)}
 .sidebar-wordmark em{color:var(--orange);font-style:normal}
@@ -225,7 +261,15 @@ color:#1a1a1a
   content:"";
   flex:1;
   height:1px;
-  background:linear-gradient(90deg, transparent, rgba(200,255,0,.25), transparent);
+  background:linear-gradient(90deg, transparent, rgba(200,255,0,.5), transparent);
+  animation:dividerGlow 3s ease-in-out infinite;
+}
+.section-divider::after{
+  animation-delay:1.5s;
+}
+@keyframes dividerGlow{
+  0%,100%{opacity:.2}
+  50%{opacity:1}
 }
 .section-divider-mark{
   font-family:"IBM Plex Mono",monospace;
@@ -234,6 +278,7 @@ color:#1a1a1a
   color:var(--orange);
   white-space:nowrap;
   opacity:.7;
+  animation:dividerGlow 4s ease-in-out infinite;
 }
 .section{margin-bottom:0}
 .section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:1px solid var(--rule)}
@@ -244,6 +289,18 @@ color:#1a1a1a
 .writing-entry{display:flex;gap:1.25rem;padding:1.35rem 0;border-bottom:1px solid var(--rule);text-decoration:none;align-items:flex-start;transition:transform .2s ease,background .2s ease}
 .writing-entry:hover{transform:translateY(-2px);background:var(--surface)}
 .writing-entry:hover .writing-title{color:var(--orange)}
+.writing-more{
+  display:inline-block;
+  margin-top:1rem;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.52rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+  text-decoration:none;
+  transition:color .2s;
+}
+.writing-more:hover{color:var(--orange);}
 .writing-num{font-family:"IBM Plex Mono",monospace;font-size:.65rem;color:var(--bone-faint);padding-top:.2rem;width:22px;flex-shrink:0}
 .writing-body{flex:1}
 .writing-title{font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:1.1rem;color:var(--bone);margin-bottom:.4rem;transition:color .2s;line-height:1.4}
@@ -844,7 +901,7 @@ function sealNote(){
     <aside class="sidebar">
       <!-- Static version of the full stamp logo, no animation -->
       <a href="#" class="sidebar-mark" onclick="leave(); return false;" style="margin-bottom:2rem">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="40" height="40">
+        <svg class="sidebar-stamp" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="40" height="40">
           <defs>
             <filter id="sb-roughen" x="-5%" y="-5%" width="110%" height="110%">
               <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="3" result="noise"/>
@@ -956,6 +1013,9 @@ function sealNote(){
             <p class="writing-geo">GSP · wwR</p>
           </div>
           <span class="writing-tag">essay</span>
+        </a>
+        <a href="https://goodcompanyleisureclub.substack.com" target="_blank" rel="noopener" class="writing-more">
+          read more on substack &nbsp;→
         </a>
       </div>
 
