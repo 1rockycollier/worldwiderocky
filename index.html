@@ -689,7 +689,19 @@ color:#1a1a1a
   .site-inner{flex-direction:column}
   .sidebar{position:relative;width:100%;min-height:auto;border-right:none;border-bottom:1px solid var(--rule)}
   .main{margin-left:0;padding:2rem 1.5rem}
-  .books-grid{grid-template-columns:1fr}
+  .books-grid{display:flex;flex-direction:column;gap:1.5rem;background:none;}
+  .book-col{padding:0;}
+  .book-col-label{padding:0 0 .6rem 0;margin-bottom:0;}
+  .book-col-books{display:flex;overflow-x:auto;gap:.85rem;padding-bottom:.75rem;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .book-col-books::-webkit-scrollbar{display:none;}
+  .book-item{flex-direction:column;align-items:flex-start;gap:.5rem;min-width:100px;flex-shrink:0;border-bottom:none;margin-bottom:0;padding-bottom:0;border-right:1px solid var(--rule);padding-right:.85rem;}
+  .book-item:last-child{border-right:none;padding-right:0;}
+  .book-cover{width:80px;height:116px;}
+  .book-cover-placeholder{width:80px;height:116px;}
+  .book-info{width:80px;}
+  .book-title{font-size:.75rem;}
+  .book-author{font-size:.5rem;}
+  .book-tooltip{display:none;}
   .films-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;overflow:visible;}
   .films-grid .film-card{min-width:unset;flex-shrink:unset;}
   .film-info{padding:.4rem .5rem;}
@@ -1032,6 +1044,7 @@ function sealNote(){
           <!-- NOW READING -->
           <div class="book-col">
             <p class="book-col-label">now reading</p>
+            <div class="book-col-books">
             <div class="book-item">
               <img class="book-cover" src="https://covers.openlibrary.org/b/id/6948932-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Rock My Soul cover"/>
               <div class="book-cover-placeholder" style="display:none">ROCK<br/>MY SOUL</div>
@@ -1050,10 +1063,12 @@ function sealNote(){
               <div class="book-info"><p class="book-title">Dust Tracks on a Road</p><p class="book-author">Zora Neale Hurston</p></div>
               <div class="book-tooltip"><p class="book-tooltip-title">Dust Tracks on a Road</p><p class="book-tooltip-author">Zora Neale Hurston</p><p class="book-tooltip-note">Hurston's autobiography. She lived on her own terms — period.</p></div>
             </div>
+            </div>
           </div>
           <!-- UP NEXT -->
           <div class="book-col">
             <p class="book-col-label">up next</p>
+            <div class="book-col-books">
             <div class="book-item">
               <img class="book-cover" src="https://covers.openlibrary.org/b/id/14813438-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="East of Eden cover"/>
               <div class="book-cover-placeholder" style="display:none">EAST<br/>OF<br/>EDEN</div>
@@ -1066,10 +1081,12 @@ function sealNote(){
               <div class="book-info"><p class="book-title">Salvation</p><p class="book-author">bell hooks</p></div>
               <div class="book-tooltip"><p class="book-tooltip-title">Salvation</p><p class="book-tooltip-author">bell hooks</p><p class="book-tooltip-note">On Black people and love. A continuation of the hooks canon.</p></div>
             </div>
+            </div>
           </div>
           <!-- RECENTLY FINISHED -->
           <div class="book-col">
             <p class="book-col-label">recently finished</p>
+            <div class="book-col-books">
             <div class="book-item">
               <img class="book-cover" src="https://covers.openlibrary.org/b/id/14829832-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Orbital cover"/>
               <div class="book-cover-placeholder" style="display:none">ORBI-<br/>TAL</div>
@@ -1081,6 +1098,7 @@ function sealNote(){
               <div class="book-cover-placeholder" style="display:none">THE<br/>ALCHE-<br/>MIST</div>
               <div class="book-info"><p class="book-title">The Alchemist</p><p class="book-author">Paulo Coelho</p><p class="book-note">reread. the language of the universe is speaking.</p></div>
               <div class="book-tooltip"><p class="book-tooltip-title">The Alchemist</p><p class="book-tooltip-author">Paulo Coelho</p><p class="book-tooltip-note">reread. the language of the universe is speaking.</p></div>
+            </div>
             </div>
           </div>
         </div>
