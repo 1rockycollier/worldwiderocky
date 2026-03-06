@@ -76,9 +76,12 @@ body{
 background:var(--base);
 color:var(--bone);
 font-family:"IBM Plex Sans",sans-serif;
-min-height:100vh;
 font-size:16px;
-padding-top:36px;
+}
+
+body.landing-active{
+overflow:hidden;
+height:100dvh;
 }
 
 html{
@@ -88,8 +91,9 @@ scroll-behavior:smooth
 
 /* ── LANDING ── */
 .landing{
-height:100vh;
-max-height:100vh;
+height:100dvh;
+max-height:100dvh;
+padding-top:36px;
 display:grid;
 grid-template-rows:1fr auto 1fr;
 position:relative;
@@ -115,16 +119,16 @@ color:var(--bone);
 line-height:1.9
 }
 
-.corner-tl{top:2rem;left:2.5rem}
-.corner-tr{top:2rem;right:2.5rem;text-align:right}
-.corner-bl{bottom:2rem;left:2.5rem}
-.corner-br{bottom:2rem;right:2.5rem;text-align:right}
+.corner-tl{top:1.5rem;left:2.5rem}
+.corner-tr{top:1.5rem;right:2.5rem;text-align:right}
+.corner-bl{bottom:1.5rem;left:2.5rem}
+.corner-br{bottom:1.5rem;right:2.5rem;text-align:right}
 
 .landing-top{
 display:flex;
 align-items:flex-end;
 justify-content:center;
-padding-bottom:3rem
+padding-bottom:1.5rem
 }
 
 .landing-mid{
@@ -143,7 +147,7 @@ font-size:clamp(2.4rem,7vw,5.5rem);
 letter-spacing:-.03em;
 color:var(--bone);
 line-height:1;
-margin-bottom:1rem
+margin-bottom:.75rem
 }
 
 .landing-wordmark em{
@@ -157,7 +161,7 @@ font-size:.62rem;
 letter-spacing:.3em;
 text-transform:uppercase;
 color:var(--bone-mid);
-margin-bottom:3rem
+margin-bottom:2rem
 }
 
 .landing-enter{
@@ -814,6 +818,11 @@ color:#1a1a1a
   *:focus{outline:none !important;}
   footer{margin-left:0 !important;padding:2rem 1.5rem !important;}
   .footer-social{display:flex;}
+  .landing{height:100dvh;max-height:100dvh;overflow:hidden;}
+  .landing-top{padding-bottom:1rem;}
+  .landing-top svg{width:85px;height:85px;}
+  .landing-tagline{margin-bottom:1.25rem;}
+  .corner-bl,.corner-br{bottom:1rem;}
 }
 
 /* ── SCROLL REVEAL ── */
@@ -857,6 +866,7 @@ color:#1a1a1a
 function enter(){
   const landing = document.getElementById("landing");
   const site = document.getElementById("site");
+  document.body.classList.remove("landing-active");
   site.classList.add("visible");
   landing.style.opacity = "0";
   landing.style.transition = "opacity .3s ease";
@@ -866,7 +876,9 @@ function enter(){
 function leave(){
   document.getElementById("landing").style.display="grid";
   document.getElementById("site").classList.remove("visible");
+  document.body.classList.add("landing-active");
 }
+window.addEventListener("DOMContentLoaded",()=>{ document.body.classList.add("landing-active"); });
 function initReveal(){
   const els = document.querySelectorAll(".reveal");
   if(!els.length) return;
@@ -947,7 +959,7 @@ window.addEventListener("scroll", function(){
   <div class="corner corner-tl">34.8526 N · 82.3940 W<br/>Greenville, SC</div>
   <div class="corner corner-tr">GSP · home base<br/>worldwiderocky.com</div>
   <div class="corner corner-bl">2026 · ongoing</div>
-  <div class="corner corner-br">filed from<br/>everywhere</div>
+  <div class="corner corner-br">living archive</div>
 
   <div class="landing-top">
     <!-- Full animated landing stamp (unchanged) -->
