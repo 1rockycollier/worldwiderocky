@@ -4,7 +4,11 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>worldwiderocky</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Caveat:wght@400;500&display=swap" rel="stylesheet"/>
+
+<!-- Favicon using inline SVG -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%232B2B2B'/%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%23F0EBE1' stroke-width='4'/%3E%3Ctext x='100' y='108' font-family='Georgia,serif' font-size='72' font-style='italic' text-anchor='middle' dominant-baseline='middle' letter-spacing='-2'%3E%3Ctspan fill='%23F0EBE1'%3Eww%3C/tspan%3E%3Ctspan fill='%23C8FF00'%3ER%3C/tspan%3E%3C/text%3E%3C/svg%3E"/>
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Caveat:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
 
 *,*::before,*::after{
@@ -40,7 +44,6 @@ scroll-behavior:smooth
 }
 
 /* ── LANDING ── */
-
 .landing{
 min-height:100vh;
 display:grid;
@@ -247,6 +250,7 @@ color:#1a1a1a
 .section-title{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--orange)}
 .section-meta{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.15em;color:var(--orange);opacity:.6}
 
+/* ── WRITING ENTRIES ── */
 .writing-entry{display:flex;gap:1.25rem;padding:1.35rem 0;border-bottom:1px solid var(--rule);text-decoration:none;align-items:flex-start;transition:transform .2s ease,background .2s ease}
 .writing-entry:hover{transform:translateY(-2px);background:var(--surface)}
 .writing-entry:hover .writing-title{color:var(--orange)}
@@ -257,24 +261,234 @@ color:#1a1a1a
 .writing-geo{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.14em;color:var(--bone-faint)}
 .writing-tag{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);opacity:.6;margin-left:auto;flex-shrink:0;padding-top:.2rem}
 
-.entry{display:flex;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--rule);text-decoration:none;align-items:flex-start;transition:transform .2s ease,background .2s ease}
-.entry:hover{transform:translateY(-2px);background:var(--surface)}
-.entry:hover .entry-title{color:var(--orange)}
-.entry-num{font-family:"IBM Plex Mono",monospace;font-size:.62rem;color:var(--bone-faint);padding-top:.15rem;width:22px;flex-shrink:0}
-.entry-body{flex:1}
-.entry-title{font-family:"IBM Plex Sans",sans-serif;font-weight:400;font-size:1rem;color:var(--bone);margin-bottom:.3rem;transition:color .2s;line-height:1.35}
-.entry-sub{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;color:var(--bone-faint);line-height:1.85}
-.entry-tag{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);opacity:.6;margin-left:auto;flex-shrink:0;padding-top:.15rem}
+/* ── BOOKS GRID ── */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+}
+.book-col {
+  background: var(--base);
+  padding: 1.5rem 1.25rem;
+}
+.book-col-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--orange);
+  opacity: .7;
+  margin-bottom: .85rem;
+}
+.book-item {
+  position: relative;
+  display: flex;
+  gap: .85rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--rule);
+  cursor: default;
+}
+.book-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-.books-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule)}
-.book-col{background:var(--base);padding:1.5rem 1.25rem}
-.book-col-label{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);opacity:.7;margin-bottom:.85rem}
-.book-item{margin-bottom:.85rem;padding-bottom:.85rem;border-bottom:1px solid var(--rule)}
-.book-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+/* book cover */
+.book-cover {
+  width: 48px;
+  height: 68px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--rule);
+  transition: transform .25s ease, box-shadow .25s ease;
+  display: block;
+}
+.book-item:hover .book-cover {
+  transform: translateY(-3px) rotate(-1deg);
+  box-shadow: 0 8px 24px rgba(0,0,0,.5);
+}
+.book-cover-placeholder {
+  width: 48px;
+  height: 68px;
+  flex-shrink: 0;
+  background: var(--lift);
+  border: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .42rem;
+  color: var(--bone-faint);
+  text-align: center;
+  letter-spacing: .1em;
+}
+.book-info { flex: 1; }
 .book-title{font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:.95rem;color:var(--bone);margin-bottom:.2rem;line-height:1.35}
 .book-author{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.08em;color:var(--bone-faint)}
 .book-note{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.82rem;color:var(--bone-mid);margin-top:.3rem;line-height:1.65;font-style:italic}
 
+/* hover tooltip for book */
+.book-tooltip {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  background: var(--lift);
+  border: 1px solid rgba(200,255,0,.2);
+  padding: .85rem 1rem;
+  width: 220px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+.book-item:hover .book-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+.book-tooltip-title {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+  font-size: .82rem;
+  color: var(--bone);
+  margin-bottom: .2rem;
+}
+.book-tooltip-author {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .55rem;
+  letter-spacing: .1em;
+  color: var(--bone-faint);
+  margin-bottom: .45rem;
+}
+.book-tooltip-note {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 300;
+  font-size: .78rem;
+  color: var(--bone-mid);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+/* ── FILMS GRID ── */
+.films-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: .5rem;
+}
+.film-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  transition: transform .25s ease, border-color .25s ease;
+}
+.film-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200,255,0,.3);
+}
+.film-poster-wrap {
+  position: relative;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  background: var(--lift);
+}
+.film-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.film-card:hover .film-poster {
+  transform: scale(1.04);
+}
+.film-poster-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .55rem;
+  color: var(--bone-faint);
+  letter-spacing: .15em;
+  text-align: center;
+  padding: 1rem;
+}
+.film-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(43,43,43,.95) 0%, rgba(43,43,43,.4) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity .3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem 1rem;
+}
+.film-card:hover .film-overlay {
+  opacity: 1;
+}
+.film-overlay-note {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 300;
+  font-size: .8rem;
+  color: var(--bone);
+  line-height: 1.65;
+  font-style: italic;
+}
+.film-overlay-where {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .52rem;
+  letter-spacing: .15em;
+  color: var(--orange);
+  margin-top: .45rem;
+}
+.film-info {
+  padding: .85rem 1rem;
+}
+.film-num {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .52rem;
+  letter-spacing: .2em;
+  color: var(--bone-faint);
+  margin-bottom: .3rem;
+}
+.film-title {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+  font-size: .92rem;
+  color: var(--bone);
+  margin-bottom: .2rem;
+  transition: color .2s;
+  line-height: 1.3;
+}
+.film-card:hover .film-title { color: var(--orange); }
+.film-sub {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .55rem;
+  letter-spacing: .08em;
+  color: var(--bone-faint);
+  line-height: 1.7;
+}
+.film-tag {
+  display: inline-block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .42rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  opacity: .6;
+  margin-top: .35rem;
+  border: 1px solid rgba(200,255,0,.2);
+  padding: .2rem .5rem;
+}
+
+/* ── CRESCENDO ── */
 .crescendo{background:var(--surface);border:1px solid var(--rule);padding:1.75rem 2rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:2rem;position:relative;overflow:hidden}
 .crescendo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--orange)}
 .crescendo-info{flex:1}
@@ -285,6 +499,7 @@ color:#1a1a1a
 .crescendo-btn{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);text-decoration:none;border:1px solid rgba(200,255,0,.3);padding:.75rem 1.5rem;flex-shrink:0;transition:background .2s}
 .crescendo-btn:hover{background:rgba(200,255,0,.08)}
 
+/* ── PLACES ── */
 .places-intro{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.92rem;font-style:italic;color:var(--bone-mid);line-height:1.85;margin-bottom:1.25rem}
 .place-row{display:flex;align-items:flex-start;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--rule)}
 .place-geo{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.08em;color:var(--orange);opacity:.55;padding-top:.15rem;flex-shrink:0;width:80px;line-height:1.85}
@@ -350,7 +565,8 @@ color:#1a1a1a
   .site-inner{flex-direction:column}
   .sidebar{position:relative;width:100%;min-height:auto;border-right:none;border-bottom:1px solid var(--rule)}
   .main{margin-left:0;padding:2rem 1.5rem}
-  .books-row{grid-template-columns:1fr}
+  .books-grid{grid-template-columns:1fr}
+  .films-grid{grid-template-columns:1fr 1fr}
   .postcard{grid-template-columns:1fr}
   .postcard-divider,.postcard-right{display:none}
   .page-header{grid-template-columns:1fr}
@@ -391,7 +607,7 @@ color:#1a1a1a
   *{scroll-behavior:auto !important}
   .landing,.site{transition:none !important}
   .reveal{opacity:1;transform:none;transition:none}
-  .writing-entry,.entry{transition:none}
+  .writing-entry,.film-card,.book-item{transition:none}
   .site-glow{animation:none}
 }
 </style>
@@ -439,6 +655,7 @@ function sealNote(){
   <div class="corner corner-br">filed from<br/>everywhere</div>
 
   <div class="landing-top">
+    <!-- Full animated landing stamp (unchanged) -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="120" height="120">
       <defs>
         <style>
@@ -468,7 +685,6 @@ function sealNote(){
           <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
         </filter>
       </defs>
-
       <g class="stamp-root">
         <g class="ring-spin">
           <circle cx="150" cy="150" r="138" fill="none" stroke="#F0EBE1" stroke-width="4.5" filter="url(#roughen-f)" opacity=".88"/>
@@ -517,15 +733,48 @@ function sealNote(){
 
   <div class="site-inner">
     <aside class="sidebar">
-      <a href="#" class="sidebar-mark" onclick="leave(); return false;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="26" height="26">
-          <circle cx="100" cy="100" r="90" fill="none" stroke="#C8FF00" stroke-width="3" opacity=".7"/>
-          <text x="100" y="107" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="50" fill="#F0EBE1" text-anchor="middle" dominant-baseline="middle">wwR</text>
+      <!-- Static version of the full stamp logo, no animation -->
+      <a href="#" class="sidebar-mark" onclick="leave(); return false;" style="margin-bottom:2rem">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="40" height="40">
+          <defs>
+            <filter id="sb-roughen" x="-5%" y="-5%" width="110%" height="110%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="3" result="noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+            <filter id="sb-stamp" x="-5%" y="-5%" width="110%" height="110%">
+              <feTurbulence type="turbulence" baseFrequency="0.065" numOctaves="3" seed="8" result="noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+          </defs>
+          <circle cx="150" cy="150" r="138" fill="none" stroke="#F0EBE1" stroke-width="4.5" filter="url(#sb-roughen)" opacity=".88"/>
+          <path id="sbTopArc" d="M 38,150 A 112,112 0 0,1 262,150" fill="none"/>
+          <text font-family="'Space Mono',monospace" font-size="13.5" font-weight="700" fill="#F0EBE1" letter-spacing="4.5" opacity=".85" filter="url(#sb-roughen)">
+            <textPath href="#sbTopArc" startOffset="50%" text-anchor="middle">WORLDWIDEROCKY</textPath>
+          </text>
+          <path id="sbBotArc" d="M 38,150 A 112,112 0 0,0 262,150" fill="none"/>
+          <text font-family="'Space Mono',monospace" font-size="11" font-weight="400" fill="#F0EBE1" letter-spacing="3.5" opacity=".7" filter="url(#sb-roughen)">
+            <textPath href="#sbBotArc" startOffset="50%" text-anchor="middle">EST. 2024 · GSP · GLOBAL</textPath>
+          </text>
+          <rect x="22" y="147" width="10" height="2" rx="1" fill="#F0EBE1" opacity=".55" transform="rotate(-2,27,148)"/>
+          <rect x="268" y="147" width="10" height="2" rx="1" fill="#F0EBE1" opacity=".55" transform="rotate(2,273,148)"/>
+          <circle cx="150" cy="150" r="120" fill="none" stroke="#F0EBE1" stroke-width="1.5" filter="url(#sb-roughen)" opacity=".35"/>
+          <text x="150" y="162"
+            font-family="'DM Serif Display',Georgia,serif"
+            font-size="82" font-style="italic"
+            text-anchor="middle" dominant-baseline="middle"
+            letter-spacing="-3" filter="url(#sb-stamp)">
+            <tspan fill="#F0EBE1" opacity=".92">ww</tspan><tspan fill="#C8FF00" opacity=".96">R</tspan>
+          </text>
+          <text x="150" y="196"
+            font-family="'Space Mono',monospace"
+            font-size="9.5" fill="#F0EBE1"
+            text-anchor="middle" letter-spacing="2.5"
+            opacity=".5" filter="url(#sb-roughen)">34.85°N · 82.39°W</text>
         </svg>
         <span class="sidebar-wordmark">world<em>wide</em>rocky.</span>
       </a>
 
-      <p class="nav-label">cities</p>
+      <p class="nav-label">landings</p>
       <ul class="stamp-list">
         <li class="stamp-item">
           <span class="stamp-code">PDX</span><span class="stamp-city">Portland</span><span class="stamp-pill soon">last stop</span>
@@ -572,6 +821,8 @@ function sealNote(){
       </div>
 
       <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
+
+      <!-- WRITING -->
       <div class="section reveal" id="read">
         <div class="section-header">
           <span class="section-title">writing</span>
@@ -598,64 +849,226 @@ function sealNote(){
       </div>
 
       <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
+
+      <!-- BOOKS -->
       <div class="section reveal">
         <div class="section-header">
           <span class="section-title">my revolving shelf</span>
         </div>
-        <div class="books-row">
+        <div class="books-grid">
+          <!-- NOW READING -->
           <div class="book-col">
             <p class="book-col-label">now reading</p>
+
             <div class="book-item">
-              <p class="book-title">Rock My Soul</p>
-              <p class="book-author">bell hooks</p>
+              <img class="book-cover"
+                src="https://covers.openlibrary.org/b/id/6948932-L.jpg"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                alt="Rock My Soul cover"/>
+              <div class="book-cover-placeholder" style="display:none">ROCK<br/>MY SOUL</div>
+              <div class="book-info">
+                <p class="book-title">Rock My Soul</p>
+                <p class="book-author">bell hooks</p>
+              </div>
+              <div class="book-tooltip">
+                <p class="book-tooltip-title">Rock My Soul</p>
+                <p class="book-tooltip-author">bell hooks</p>
+                <p class="book-tooltip-note">Black people and self-esteem. Heavy and necessary.</p>
+              </div>
             </div>
+
             <div class="book-item">
-              <p class="book-title">Giovanni's Room</p>
-              <p class="book-author">James Baldwin</p>
+              <img class="book-cover"
+                src="https://covers.openlibrary.org/b/id/6790980-L.jpg"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                alt="Giovanni's Room cover"/>
+              <div class="book-cover-placeholder" style="display:none">GIOV-<br/>ANNI'S<br/>ROOM</div>
+              <div class="book-info">
+                <p class="book-title">Giovanni's Room</p>
+                <p class="book-author">James Baldwin</p>
+              </div>
+              <div class="book-tooltip">
+                <p class="book-tooltip-title">Giovanni's Room</p>
+                <p class="book-tooltip-author">James Baldwin</p>
+                <p class="book-tooltip-note">Baldwin on desire, shame, and the cost of running from yourself.</p>
+              </div>
             </div>
+
             <div class="book-item">
-              <p class="book-title">Dust Tracks on a Road</p>
-              <p class="book-author">Zora Neale Hurston</p>
+              <img class="book-cover"
+                src="https://covers.openlibrary.org/b/id/38371-L.jpg"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                alt="Dust Tracks on a Road cover"/>
+              <div class="book-cover-placeholder" style="display:none">DUST<br/>TRACKS</div>
+              <div class="book-info">
+                <p class="book-title">Dust Tracks on a Road</p>
+                <p class="book-author">Zora Neale Hurston</p>
+              </div>
+              <div class="book-tooltip">
+                <p class="book-tooltip-title">Dust Tracks on a Road</p>
+                <p class="book-tooltip-author">Zora Neale Hurston</p>
+                <p class="book-tooltip-note">Hurston's autobiography. She lived on her own terms — period.</p>
+              </div>
             </div>
           </div>
+
+          <!-- UP NEXT -->
           <div class="book-col">
             <p class="book-col-label">up next</p>
+
             <div class="book-item">
-              <p class="book-title">East of Eden</p>
-              <p class="book-author">John Steinbeck</p>
+              <img class="book-cover"
+                src="https://covers.openlibrary.org/b/id/14813438-L.jpg"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                alt="East of Eden cover"/>
+              <div class="book-cover-placeholder" style="display:none">EAST<br/>OF<br/>EDEN</div>
+              <div class="book-info">
+                <p class="book-title">East of Eden</p>
+                <p class="book-author">John Steinbeck</p>
+              </div>
+              <div class="book-tooltip">
+                <p class="book-tooltip-title">East of Eden</p>
+                <p class="book-tooltip-author">John Steinbeck</p>
+                <p class="book-tooltip-note">The big one. Timshel — thou mayest.</p>
+              </div>
             </div>
+
             <div class="book-item">
-              <p class="book-title">Salvation</p>
-              <p class="book-author">bell hooks</p>
+              <img class="book-cover"
+                src="https://covers.openlibrary.org/b/id/22510-L.jpg"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                alt="Salvation cover"/>
+              <div class="book-cover-placeholder" style="display:none">SALV-<br/>ATION</div>
+              <div class="book-info">
+                <p class="book-title">Salvation</p>
+                <p class="book-author">bell hooks</p>
+              </div>
+              <div class="book-tooltip">
+                <p class="book-tooltip-title">Salvation</p>
+                <p class="book-tooltip-author">bell hooks</p>
+                <p class="book-tooltip-note">On Black people and love. A continuation of the hooks canon.</p>
+              </div>
             </div>
           </div>
+
+          <!-- RECENTLY FINISHED -->
           <div class="book-col">
             <p class="book-col-label">recently finished</p>
+
             <div class="book-item">
-              <p class="book-title">Orbital</p>
-              <p class="book-author">Samantha Harvey</p>
+              <img class="book-cover"
+                src="https://covers.openlibrary.org/b/id/14829832-L.jpg"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                alt="Orbital cover"/>
+              <div class="book-cover-placeholder" style="display:none">ORBI-<br/>TAL</div>
+              <div class="book-info">
+                <p class="book-title">Orbital</p>
+                <p class="book-author">Samantha Harvey</p>
+              </div>
+              <div class="book-tooltip">
+                <p class="book-tooltip-title">Orbital</p>
+                <p class="book-tooltip-author">Samantha Harvey</p>
+                <p class="book-tooltip-note">Booker Prize winner. 24 hours on a space station — quiet and stunning.</p>
+              </div>
             </div>
+
             <div class="book-item">
-              <p class="book-title">The Alchemist</p>
-              <p class="book-author">Paulo Coelho</p>
-              <p class="book-note">reread. the language of the universe is speaking.</p>
+              <img class="book-cover"
+                src="https://covers.openlibrary.org/b/id/15121528-L.jpg"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                alt="The Alchemist cover"/>
+              <div class="book-cover-placeholder" style="display:none">THE<br/>ALCHE-<br/>MIST</div>
+              <div class="book-info">
+                <p class="book-title">The Alchemist</p>
+                <p class="book-author">Paulo Coelho</p>
+                <p class="book-note">reread. the language of the universe is speaking.</p>
+              </div>
+              <div class="book-tooltip">
+                <p class="book-tooltip-title">The Alchemist</p>
+                <p class="book-tooltip-author">Paulo Coelho</p>
+                <p class="book-tooltip-note">reread. the language of the universe is speaking.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
+
+      <!-- FILMS -->
       <div class="section reveal">
         <div class="section-header">
           <span class="section-title">media · in rotation</span>
-          <span class="section-meta">03 entries</span>
+          <span class="section-meta">03 films</span>
         </div>
-        <a href="#" class="entry"><span class="entry-num">01</span><div class="entry-body"><p class="entry-title">EDEN</p><p class="entry-sub"> film · based on a true story. human nature doesn't change, fr!  · Netflix · 2024 · wwR</p></div><span class="entry-tag">film</span></a>
-        <a href="#" class="entry"><span class="entry-num">02</span><div class="entry-body"><p class="entry-title"> Portrait of a Lady on Fire</p><p class="entry-sub"> film · just press play, trust me! · HULU · 2019 · wwR</p></div><span class="entry-tag">show</span></a>
-        <a href="#" class="entry"><span class="entry-num">03</span><div class="entry-body"><p class="entry-title">Anatomy of a Fall</p><p class="entry-sub"> film · thought provoking movie. who would you believe??· HULU · 2023 · wwR</p></div><span class="entry-tag">doc</span></a>
+        <div class="films-grid">
+
+          <div class="film-card">
+            <div class="film-poster-wrap">
+              <img class="film-poster"
+                src="https://media.themoviedb.org/t/p/w600_and_h900_face/jbFEESMVbpJU8IjZBjiWGJdEsxR.jpg"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                alt="EDEN poster"/>
+              <div class="film-poster-fallback" style="display:none">EDEN</div>
+              <div class="film-overlay">
+                <p class="film-overlay-note">Based on a true story. Human nature doesn't change, fr!</p>
+                <p class="film-overlay-where">Netflix · 2024</p>
+              </div>
+            </div>
+            <div class="film-info">
+              <p class="film-num">01</p>
+              <p class="film-title">EDEN</p>
+              <p class="film-sub">film · Netflix · 2024</p>
+              <span class="film-tag">film</span>
+            </div>
+          </div>
+
+          <div class="film-card">
+            <div class="film-poster-wrap">
+              <img class="film-poster"
+                src="https://media.themoviedb.org/t/p/w600_and_h900_face/2LquGwEhbg3soxSCs9VNyh5VJd9.jpg"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                alt="Portrait of a Lady on Fire poster"/>
+              <div class="film-poster-fallback" style="display:none">PORTRAIT OF A LADY ON FIRE</div>
+              <div class="film-overlay">
+                <p class="film-overlay-note">Just press play, trust me!</p>
+                <p class="film-overlay-where">Hulu · 2019</p>
+              </div>
+            </div>
+            <div class="film-info">
+              <p class="film-num">02</p>
+              <p class="film-title">Portrait of a Lady on Fire</p>
+              <p class="film-sub">film · Hulu · 2019</p>
+              <span class="film-tag">film</span>
+            </div>
+          </div>
+
+          <div class="film-card">
+            <div class="film-poster-wrap">
+              <img class="film-poster"
+                src="https://media.themoviedb.org/t/p/w600_and_h900_face/kQs6keheMwCxJxrzV83VUwFtHkB.jpg"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                alt="Anatomy of a Fall poster"/>
+              <div class="film-poster-fallback" style="display:none">ANATOMY OF A FALL</div>
+              <div class="film-overlay">
+                <p class="film-overlay-note">Thought provoking. Who would you believe??</p>
+                <p class="film-overlay-where">Hulu · 2023</p>
+              </div>
+            </div>
+            <div class="film-info">
+              <p class="film-num">03</p>
+              <p class="film-title">Anatomy of a Fall</p>
+              <p class="film-sub">film · Hulu · 2023</p>
+              <span class="film-tag">film</span>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
+
+      <!-- SOUNDS -->
       <div class="section reveal" id="listen">
         <div class="section-header">
           <span class="section-title">sounds</span>
@@ -672,11 +1085,13 @@ function sealNote(){
       </div>
 
       <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
+
+      <!-- PLACES -->
       <div class="section reveal">
         <div class="section-header">
           <span class="section-title">places · filed from wherever</span>
         </div>
-        <p class="places-intro"> A running log of spots worth returning to.</p>
+        <p class="places-intro">A running log of spots worth returning to.</p>
         <div class="place-row">
           <div class="place-geo">33.47°N<br/>81.97°W</div>
           <div class="place-body"><p class="place-name">Augusta 20</p><p class="place-type">coffee · Greenville, SC</p><p class="place-note">home away from home.</p></div>
@@ -695,6 +1110,8 @@ function sealNote(){
       </div>
 
       <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
+
+      <!-- POSTCARD -->
       <div class="postcard-wrap reveal" id="note">
         <div class="postcard">
           <div class="postcard-left">
@@ -707,9 +1124,42 @@ function sealNote(){
           <div class="postcard-divider"></div>
           <div class="postcard-right">
             <div class="postcard-stamp-area">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="52" height="52" opacity=".35">
-                <circle cx="100" cy="100" r="90" fill="none" stroke="#C8FF00" stroke-width="3"/>
-                <text x="100" y="107" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="50" fill="#F0EBE1" text-anchor="middle" dominant-baseline="middle">wwR</text>
+              <!-- Static full stamp logo in postcard, no animation, smaller -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="58" height="58" opacity=".4">
+                <defs>
+                  <filter id="pc-roughen" x="-5%" y="-5%" width="110%" height="110%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="3" result="noise"/>
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+                  </filter>
+                  <filter id="pc-stamp" x="-5%" y="-5%" width="110%" height="110%">
+                    <feTurbulence type="turbulence" baseFrequency="0.065" numOctaves="3" seed="8" result="noise"/>
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+                  </filter>
+                </defs>
+                <circle cx="150" cy="150" r="138" fill="none" stroke="#F0EBE1" stroke-width="4.5" filter="url(#pc-roughen)" opacity=".88"/>
+                <path id="pcTopArc" d="M 38,150 A 112,112 0 0,1 262,150" fill="none"/>
+                <text font-family="'Space Mono',monospace" font-size="13.5" font-weight="700" fill="#F0EBE1" letter-spacing="4.5" opacity=".85" filter="url(#pc-roughen)">
+                  <textPath href="#pcTopArc" startOffset="50%" text-anchor="middle">WORLDWIDEROCKY</textPath>
+                </text>
+                <path id="pcBotArc" d="M 38,150 A 112,112 0 0,0 262,150" fill="none"/>
+                <text font-family="'Space Mono',monospace" font-size="11" font-weight="400" fill="#F0EBE1" letter-spacing="3.5" opacity=".7" filter="url(#pc-roughen)">
+                  <textPath href="#pcBotArc" startOffset="50%" text-anchor="middle">EST. 2024 · GSP · GLOBAL</textPath>
+                </text>
+                <rect x="22" y="147" width="10" height="2" rx="1" fill="#F0EBE1" opacity=".55" transform="rotate(-2,27,148)"/>
+                <rect x="268" y="147" width="10" height="2" rx="1" fill="#F0EBE1" opacity=".55" transform="rotate(2,273,148)"/>
+                <circle cx="150" cy="150" r="120" fill="none" stroke="#F0EBE1" stroke-width="1.5" filter="url(#pc-roughen)" opacity=".35"/>
+                <text x="150" y="162"
+                  font-family="'DM Serif Display',Georgia,serif"
+                  font-size="82" font-style="italic"
+                  text-anchor="middle" dominant-baseline="middle"
+                  letter-spacing="-3" filter="url(#pc-stamp)">
+                  <tspan fill="#F0EBE1" opacity=".92">ww</tspan><tspan fill="#C8FF00" opacity=".96">R</tspan>
+                </text>
+                <text x="150" y="196"
+                  font-family="'Space Mono',monospace"
+                  font-size="9.5" fill="#F0EBE1"
+                  text-anchor="middle" letter-spacing="2.5"
+                  opacity=".5" filter="url(#pc-roughen)">34.85°N · 82.39°W</text>
               </svg>
             </div>
             <div class="postcard-lines">
@@ -724,6 +1174,11 @@ function sealNote(){
 
     </main>
   </div>
+
+  <footer style="margin-left:var(--sidebar);border-top:1px solid var(--rule);padding:3rem 4rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;position:relative;z-index:1;">
+    <p style="font-family:'Caveat',cursive;font-size:1.8rem;color:var(--bone);opacity:.65;letter-spacing:.01em;">always with love,</p>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:.48rem;letter-spacing:.3em;text-transform:uppercase;color:var(--bone-faint);">worldwiderocky.com</p>
+  </footer>
 </div>
 
 <script>
