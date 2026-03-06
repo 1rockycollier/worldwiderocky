@@ -280,6 +280,7 @@ color:#1a1a1a
   opacity:.7;
   animation:dividerGlow 4s ease-in-out infinite;
 }
+.mobile-landings-divider{display:none;}
 .mobile-landings{display:none;}
 
 
@@ -715,6 +716,7 @@ color:#1a1a1a
   .corner-tr,.corner-bl{display:none}
   .crescendo{flex-direction:column;align-items:flex-start;gap:1rem}
   .mobile-landings{display:block;}
+  .mobile-landings-divider{display:flex;}
   .sidebar-landings-label{display:none;}
   .sidebar-landings-list{display:none;}
   .sidebar-foot{display:none;}
@@ -1625,7 +1627,7 @@ function sealNote(){
         </div>
       </div>
 
-      <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
+      <div class="section-divider mobile-landings-divider"><span class="section-divider-mark">· · ·</span></div>
 
       <!-- MOBILE ONLY LANDINGS -->
       <div class="section reveal mobile-landings">
