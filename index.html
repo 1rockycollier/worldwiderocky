@@ -197,6 +197,7 @@ color:#1a1a1a
 .sidebar-mark{display:flex;align-items:center;gap:.75rem;text-decoration:none;margin-bottom:2.5rem}
 .sidebar-wordmark{font-family:"IBM Plex Sans",sans-serif;font-weight:700;font-size:.9rem;letter-spacing:-.02em;color:var(--bone)}
 .sidebar-wordmark em{color:var(--orange);font-style:normal}
+.sidebar-foot{margin-top:auto;padding-top:1.75rem;border-top:1px solid var(--rule)}
 .nav-label{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.4em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem;margin-top:1.5rem}
 .stamp-list{list-style:none;display:flex;flex-direction:column;gap:.2rem}
 .stamp-item{display:flex;align-items:center;gap:.75rem;padding:.6rem .8rem;cursor:pointer;transition:background .2s;border:1px solid transparent;position:relative;text-decoration:none}
@@ -211,7 +212,27 @@ color:#1a1a1a
 .stamp-pill{font-family:"IBM Plex Mono",monospace;font-size:.34rem;letter-spacing:.12em;text-transform:uppercase;margin-left:auto}
 .stamp-pill.upcoming{color:var(--orange);opacity:.6}
 .stamp-pill.soon{color:var(--bone-faint)}
-.sidebar-foot{margin-top:auto;padding-top:1.75rem;border-top:1px solid var(--rule)}
+.sidebar-about{
+  font-family:"DM Serif Display",Georgia,serif;
+  font-style:italic;
+  font-size:.78rem;
+  line-height:1.75;
+  color:rgba(240,235,225,.5);
+  margin-bottom:1.75rem;
+  padding-bottom:1.5rem;
+  border-bottom:1px solid var(--rule);
+  word-wrap:break-word;
+  overflow-wrap:break-word;
+  max-width:100%;
+}
+.sidebar-about a{
+  color:var(--orange);
+  font-family:"IBM Plex Mono",monospace;
+  font-style:normal;
+  font-size:.45rem;
+  letter-spacing:.15em;
+  text-decoration:none;
+}
 .sidebar-link{font-family:"IBM Plex Mono",monospace;font-size:.4rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone);text-decoration:none;display:block;margin-bottom:.55rem;transition:color .2s}
 .sidebar-link:hover{color:var(--bone-mid)}
 
@@ -964,6 +985,8 @@ function sealNote(){
         </svg>
         <span class="sidebar-wordmark">world<em>wide</em>rocky.</span>
       </a>
+
+      <p class="sidebar-about">hi, i'm rocky. a real estate developer, speaker, and collector of good experiences. this is where i keep what inspires me — the books, films, places, and moments that shape how i see the world. more on my work at <a href="https://racquelcollier.com" target="_blank" rel="noopener">racquelcollier.com</a></p>
 
       <p class="nav-label sidebar-landings-label">landings</p>
       <ul class="stamp-list sidebar-landings-list">
