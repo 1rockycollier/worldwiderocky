@@ -236,12 +236,12 @@ color:#1a1a1a
 .postcard{background:var(--surface);border:1px solid var(--rule);display:grid;grid-template-columns:1fr 1px 160px;min-height:220px;position:relative;overflow:hidden}
 .postcard::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--orange) 0,var(--orange) 18px,transparent 18px,transparent 26px)}
 .postcard-left{padding:2rem 1.75rem;display:flex;flex-direction:column}
-.postcard-label{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.38em;text-transform:uppercase;color:var(--orange);opacity:.8;margin-bottom:.6rem}
-.postcard-prompt{font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:.95rem;color:var(--bone);margin-bottom:.3rem;line-height:1.45}
-.postcard-date{font-family:"IBM Plex Mono",monospace;font-size:.38rem;letter-spacing:.15em;color:var(--bone-faint);margin-bottom:1.25rem}
+.postcard-label{font-family:"IBM Plex Mono",monospace;font-size:.52rem;letter-spacing:.38em;text-transform:uppercase;color:var(--orange);opacity:.8;margin-bottom:.6rem}
+.postcard-prompt{font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:1.3rem;color:var(--bone);margin-bottom:.3rem;line-height:1.45}
+.postcard-date{font-family:"IBM Plex Mono",monospace;font-size:.48rem;letter-spacing:.15em;color:var(--bone-faint);margin-bottom:1.25rem}
 .postcard-textarea{flex:1;background:transparent;border:none;border-bottom:1px solid var(--rule);padding:.5rem 0;font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.82rem;color:var(--bone);resize:none;outline:none;min-height:70px;line-height:1.8}
 .postcard-textarea::placeholder{color:var(--bone-faint)}
-.postcard-send{display:inline-flex;align-items:center;gap:.6rem;background:var(--orange);border:none;padding:.7rem 1.5rem;font-family:"IBM Plex Mono",monospace;font-size:.48rem;letter-spacing:.3em;text-transform:uppercase;color:#1a1a1a;cursor:pointer;margin-top:1rem;align-self:flex-start;transition:opacity .2s}
+.postcard-send{display:inline-flex;align-items:center;gap:.6rem;background:var(--orange);border:1px solid var(--orange);padding:.7rem 1.5rem;font-family:"IBM Plex Mono",monospace;font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:#1a1a1a;cursor:pointer;margin-top:1rem;align-self:flex-start;transition:opacity .2s}
 .postcard-send:hover{opacity:.85}
 .postcard-divider{background:var(--rule)}
 .postcard-right{padding:2rem 1.25rem;display:flex;flex-direction:column;justify-content:space-between}
@@ -717,6 +717,11 @@ color:#1a1a1a
   .mobile-landings{display:block;}
   .sidebar-landings-label{display:none;}
   .sidebar-landings-list{display:none;}
+  .sidebar-foot{display:none;}
+  .postcard{border:1px solid var(--rule) !important;outline:none !important;}
+  .postcard::before{display:none;}
+  .postcard-send{background:none !important;border:1px solid var(--orange) !important;color:var(--bone) !important;}
+  *:focus{outline:none !important;}
   footer{margin-left:0 !important;padding:2rem 1.5rem !important;}
   .footer-social{display:flex;}
 }
@@ -1622,9 +1627,6 @@ function sealNote(){
 
       <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
 
-      <!-- POSTCARD -->
-      <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
-
       <!-- MOBILE ONLY LANDINGS -->
       <div class="section reveal mobile-landings">
         <div class="section-header">
@@ -1645,6 +1647,8 @@ function sealNote(){
           </li>
         </ul>
       </div>
+
+      <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
 
       <div class="postcard-wrap reveal" id="note">
         <div class="postcard">
