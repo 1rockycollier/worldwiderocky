@@ -280,7 +280,9 @@ color:#1a1a1a
   opacity:.7;
   animation:dividerGlow 4s ease-in-out infinite;
 }
-.section{margin-bottom:0}
+.mobile-landings{display:none;}
+
+
 .section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:1px solid var(--rule)}
 .section-title{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--orange)}
 .section-meta{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.15em;color:var(--orange);opacity:.6}
@@ -712,7 +714,9 @@ color:#1a1a1a
   .page-header{grid-template-columns:1fr}
   .corner-tr,.corner-bl{display:none}
   .crescendo{flex-direction:column;align-items:flex-start;gap:1rem}
-  .site-intro-script{font-size:9.5vw;white-space:nowrap;}
+  .mobile-landings{display:block;}
+  .sidebar-landings-label{display:none;}
+  .sidebar-landings-list{display:none;}
   footer{margin-left:0 !important;padding:2rem 1.5rem !important;}
   .footer-social{display:flex;}
 }
@@ -954,8 +958,8 @@ function sealNote(){
         <span class="sidebar-wordmark">world<em>wide</em>rocky.</span>
       </a>
 
-      <p class="nav-label">landings</p>
-      <ul class="stamp-list">
+      <p class="nav-label sidebar-landings-label">landings</p>
+      <ul class="stamp-list sidebar-landings-list">
         <li class="stamp-item">
           <span class="stamp-code">PDX</span><span class="stamp-city">Portland</span><span class="stamp-pill soon">last stop</span>
         </li>
@@ -1619,6 +1623,29 @@ function sealNote(){
       <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
 
       <!-- POSTCARD -->
+      <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
+
+      <!-- MOBILE ONLY LANDINGS -->
+      <div class="section reveal mobile-landings">
+        <div class="section-header">
+          <span class="section-title">landings</span>
+        </div>
+        <ul class="stamp-list">
+          <li class="stamp-item">
+            <span class="stamp-code">PDX</span><span class="stamp-city">Portland</span><span class="stamp-pill soon">last stop</span>
+          </li>
+          <li class="stamp-item active">
+            <span class="stamp-code">GSP</span><span class="stamp-city">Greenville</span><span class="stamp-dot"></span>
+          </li>
+          <li class="stamp-item">
+            <span class="stamp-code">HTX</span><span class="stamp-city">Houston</span><span class="stamp-pill upcoming">upcoming</span>
+          </li>
+          <li class="stamp-item">
+            <span class="stamp-code">NYC</span><span class="stamp-city">New York</span><span class="stamp-pill soon">soon</span>
+          </li>
+        </ul>
+      </div>
+
       <div class="postcard-wrap reveal" id="note">
         <div class="postcard">
           <div class="postcard-left">
