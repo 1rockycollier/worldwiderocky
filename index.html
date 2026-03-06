@@ -488,7 +488,77 @@ color:#1a1a1a
   padding: .2rem .5rem;
 }
 
-/* ── CRESCENDO ── */
+/* ── SHELF TOGGLE ── */
+.shelf-toggle{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:1.25rem 0 .5rem;
+  width:100%;
+}
+.shelf-toggle-line{flex:1;height:1px;background:var(--rule);}
+.shelf-toggle-label{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.52rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+  white-space:nowrap;
+  transition:color .2s;
+}
+.shelf-toggle:hover .shelf-toggle-label,.shelf-toggle:hover .shelf-toggle-arrow{color:var(--orange);}
+.shelf-toggle-arrow{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.6rem;
+  color:var(--bone-faint);
+  transition:transform .3s ease,color .2s;
+  display:inline-block;
+}
+.shelf-toggle.open .shelf-toggle-arrow{transform:rotate(180deg);}
+
+/* ── TIMELINE BODY ── */
+.timeline-body{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.4,0,.2,1);}
+.timeline-body.open{max-height:99999px;}
+.timeline-inner{padding:1.5rem 0 .5rem;}
+
+/* ── YEAR BLOCK ── */
+.timeline-year-wrap{margin-bottom:.5rem;}
+.timeline-year-btn{
+  display:flex;
+  align-items:center;
+  gap:.85rem;
+  width:100%;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:.65rem 0;
+  margin-bottom:.75rem;
+}
+.timeline-year-btn:hover .timeline-year-label{opacity:1;}
+.timeline-year-btn:hover .timeline-year-arrow{color:var(--orange);}
+.timeline-year-label{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--orange);opacity:.75;flex-shrink:0;transition:opacity .2s;}
+.timeline-year-rule{flex:1;height:1px;background:rgba(200,255,0,.12);}
+.timeline-year-count{font-family:"IBM Plex Mono",monospace;font-size:.48rem;letter-spacing:.2em;color:var(--bone-faint);flex-shrink:0;}
+.timeline-year-arrow{font-family:"IBM Plex Mono",monospace;font-size:.55rem;color:var(--bone-faint);transition:transform .3s ease,color .2s;flex-shrink:0;}
+.timeline-year-btn.open .timeline-year-arrow{transform:rotate(180deg);}
+
+.timeline-year-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1);}
+.timeline-year-body.open{max-height:9999px;}
+
+/* ── MONTH + BOOK ── */
+.timeline-month-block{padding-left:1.25rem;border-left:1px solid var(--rule);margin-bottom:1.35rem;position:relative;}
+.timeline-month-block::before{content:"";position:absolute;left:-3px;top:7px;width:5px;height:5px;border-radius:50%;background:var(--orange);opacity:.5;}
+.timeline-month-label{font-family:"IBM Plex Mono",monospace;font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:var(--bone-faint);margin-bottom:.5rem;}
+.timeline-month-label span{color:var(--orange);opacity:.55;margin-right:.4rem;}
+.timeline-book{display:flex;align-items:baseline;gap:.75rem;padding:.45rem 0;border-bottom:1px solid var(--rule);}
+.timeline-book:last-child{border-bottom:none;}
+.timeline-book:hover{background:rgba(240,235,225,.03);}
+.timeline-book-title{font-family:"IBM Plex Sans",sans-serif;font-weight:400;font-size:.9rem;color:var(--bone);flex:1;line-height:1.4;}
+.timeline-book-author{font-family:"IBM Plex Mono",monospace;font-size:.55rem;letter-spacing:.08em;color:var(--bone-faint);flex-shrink:0;}
+.reread-tag{font-family:"IBM Plex Mono",monospace;font-size:.45rem;letter-spacing:.15em;color:var(--orange);opacity:.6;margin-left:.5rem;}
 .crescendo{background:var(--surface);border:1px solid var(--rule);padding:1.75rem 2rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:2rem;position:relative;overflow:hidden}
 .crescendo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--orange)}
 .crescendo-info{flex:1}
@@ -517,7 +587,7 @@ color:#1a1a1a
 }
 .site-intro-script{
   font-family:"Caveat",cursive;
-  font-size:2.4rem;
+  font-size:3.2rem;
   font-weight:400;
   color:var(--bone);
   opacity:.78;
@@ -553,11 +623,11 @@ color:#1a1a1a
   font-size:.6rem;
   letter-spacing:.2em;
   color:#1a1a1a;
-  padding-left:100%;
+  display:inline-block;
 }
 @keyframes scrollText{
   0%{transform:translateX(0)}
-  100%{transform:translateX(-100%)}
+  100%{transform:translateX(-50%)}
 }
 
 @media(max-width:768px){
@@ -572,6 +642,7 @@ color:#1a1a1a
   .page-header{grid-template-columns:1fr}
   .corner-tr,.corner-bl{display:none}
   .crescendo{flex-direction:column;align-items:flex-start;gap:1rem}
+  footer{margin-left:0 !important;padding:2rem 1.5rem !important;}
 }
 
 /* ── SCROLL REVEAL ── */
@@ -629,6 +700,20 @@ function initReveal(){
   },{threshold:0.1});
   els.forEach(el=>obs.observe(el));
 }
+function toggleShelf(){
+  const btn = document.getElementById("shelfToggle");
+  const body = document.getElementById("timelineBody");
+  btn.classList.toggle("open");
+  body.classList.toggle("open");
+  const label = btn.querySelector(".shelf-toggle-label");
+  label.textContent = body.classList.contains("open") ? "close shelf" : "see full shelf";
+}
+function toggleYear(id, btn){
+  const body = document.getElementById(id);
+  body.classList.toggle("open");
+  btn.classList.toggle("open");
+}
+
 function sealNote(){
   const t=document.querySelector(".postcard-textarea");
   if(!t.value.trim())return;
@@ -801,17 +886,9 @@ function sealNote(){
 
       <div class="site-intro reveal">
         <p class="site-intro-script">a record of what moves me.</p>
-        <p class="site-intro-sub">media, places, and things i'm paying attention to</p>
+        <p class="site-intro-sub">media, places, and moments of leisure</p>
       </div>
 
-      <div class="page-header">
-        <div class="page-header-left">
-          <p class="page-stamp">GSP · home base</p>
-          <h1 class="page-city">Greenville, SC.</h1>
-          <p class="page-coords">34.8526 N · 82.3940 W · UTC−5</p>
-          <p class="page-updated"><span class="page-updated-dot"></span><span id="lastUpdated">updated today</span></p>
-        </div>
-      </div>
 
       <div class="dispatch reveal">
         <p class="dispatch-label">notes from here</p>
@@ -859,136 +936,450 @@ function sealNote(){
           <!-- NOW READING -->
           <div class="book-col">
             <p class="book-col-label">now reading</p>
-
             <div class="book-item">
-              <img class="book-cover"
-                src="https://covers.openlibrary.org/b/id/6948932-L.jpg"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                alt="Rock My Soul cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/6948932-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Rock My Soul cover"/>
               <div class="book-cover-placeholder" style="display:none">ROCK<br/>MY SOUL</div>
-              <div class="book-info">
-                <p class="book-title">Rock My Soul</p>
-                <p class="book-author">bell hooks</p>
-              </div>
-              <div class="book-tooltip">
-                <p class="book-tooltip-title">Rock My Soul</p>
-                <p class="book-tooltip-author">bell hooks</p>
-                <p class="book-tooltip-note">Black people and self-esteem. Heavy and necessary.</p>
-              </div>
+              <div class="book-info"><p class="book-title">Rock My Soul</p><p class="book-author">bell hooks</p></div>
+              <div class="book-tooltip"><p class="book-tooltip-title">Rock My Soul</p><p class="book-tooltip-author">bell hooks</p><p class="book-tooltip-note">Black people and self-esteem. Heavy and necessary.</p></div>
             </div>
-
             <div class="book-item">
-              <img class="book-cover"
-                src="https://covers.openlibrary.org/b/id/6790980-L.jpg"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                alt="Giovanni's Room cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/6790980-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Giovanni's Room cover"/>
               <div class="book-cover-placeholder" style="display:none">GIOV-<br/>ANNI'S<br/>ROOM</div>
-              <div class="book-info">
-                <p class="book-title">Giovanni's Room</p>
-                <p class="book-author">James Baldwin</p>
-              </div>
-              <div class="book-tooltip">
-                <p class="book-tooltip-title">Giovanni's Room</p>
-                <p class="book-tooltip-author">James Baldwin</p>
-                <p class="book-tooltip-note">Baldwin on desire, shame, and the cost of running from yourself.</p>
-              </div>
+              <div class="book-info"><p class="book-title">Giovanni's Room</p><p class="book-author">James Baldwin</p></div>
+              <div class="book-tooltip"><p class="book-tooltip-title">Giovanni's Room</p><p class="book-tooltip-author">James Baldwin</p><p class="book-tooltip-note">Baldwin on desire, shame, and the cost of running from yourself.</p></div>
             </div>
-
             <div class="book-item">
-              <img class="book-cover"
-                src="https://covers.openlibrary.org/b/id/38371-L.jpg"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                alt="Dust Tracks on a Road cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/38371-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Dust Tracks on a Road cover"/>
               <div class="book-cover-placeholder" style="display:none">DUST<br/>TRACKS</div>
-              <div class="book-info">
-                <p class="book-title">Dust Tracks on a Road</p>
-                <p class="book-author">Zora Neale Hurston</p>
-              </div>
-              <div class="book-tooltip">
-                <p class="book-tooltip-title">Dust Tracks on a Road</p>
-                <p class="book-tooltip-author">Zora Neale Hurston</p>
-                <p class="book-tooltip-note">Hurston's autobiography. She lived on her own terms — period.</p>
-              </div>
+              <div class="book-info"><p class="book-title">Dust Tracks on a Road</p><p class="book-author">Zora Neale Hurston</p></div>
+              <div class="book-tooltip"><p class="book-tooltip-title">Dust Tracks on a Road</p><p class="book-tooltip-author">Zora Neale Hurston</p><p class="book-tooltip-note">Hurston's autobiography. She lived on her own terms — period.</p></div>
             </div>
           </div>
-
           <!-- UP NEXT -->
           <div class="book-col">
             <p class="book-col-label">up next</p>
-
             <div class="book-item">
-              <img class="book-cover"
-                src="https://covers.openlibrary.org/b/id/14813438-L.jpg"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                alt="East of Eden cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/14813438-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="East of Eden cover"/>
               <div class="book-cover-placeholder" style="display:none">EAST<br/>OF<br/>EDEN</div>
-              <div class="book-info">
-                <p class="book-title">East of Eden</p>
-                <p class="book-author">John Steinbeck</p>
-              </div>
-              <div class="book-tooltip">
-                <p class="book-tooltip-title">East of Eden</p>
-                <p class="book-tooltip-author">John Steinbeck</p>
-                <p class="book-tooltip-note">The big one. Timshel — thou mayest.</p>
-              </div>
+              <div class="book-info"><p class="book-title">East of Eden</p><p class="book-author">John Steinbeck</p></div>
+              <div class="book-tooltip"><p class="book-tooltip-title">East of Eden</p><p class="book-tooltip-author">John Steinbeck</p><p class="book-tooltip-note">The big one. Timshel — thou mayest.</p></div>
             </div>
-
             <div class="book-item">
-              <img class="book-cover"
-                src="https://covers.openlibrary.org/b/id/22510-L.jpg"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                alt="Salvation cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/22510-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Salvation cover"/>
               <div class="book-cover-placeholder" style="display:none">SALV-<br/>ATION</div>
-              <div class="book-info">
-                <p class="book-title">Salvation</p>
-                <p class="book-author">bell hooks</p>
-              </div>
-              <div class="book-tooltip">
-                <p class="book-tooltip-title">Salvation</p>
-                <p class="book-tooltip-author">bell hooks</p>
-                <p class="book-tooltip-note">On Black people and love. A continuation of the hooks canon.</p>
-              </div>
+              <div class="book-info"><p class="book-title">Salvation</p><p class="book-author">bell hooks</p></div>
+              <div class="book-tooltip"><p class="book-tooltip-title">Salvation</p><p class="book-tooltip-author">bell hooks</p><p class="book-tooltip-note">On Black people and love. A continuation of the hooks canon.</p></div>
             </div>
           </div>
-
           <!-- RECENTLY FINISHED -->
           <div class="book-col">
             <p class="book-col-label">recently finished</p>
-
             <div class="book-item">
-              <img class="book-cover"
-                src="https://covers.openlibrary.org/b/id/14829832-L.jpg"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                alt="Orbital cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/14829832-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Orbital cover"/>
               <div class="book-cover-placeholder" style="display:none">ORBI-<br/>TAL</div>
-              <div class="book-info">
-                <p class="book-title">Orbital</p>
-                <p class="book-author">Samantha Harvey</p>
-              </div>
-              <div class="book-tooltip">
-                <p class="book-tooltip-title">Orbital</p>
-                <p class="book-tooltip-author">Samantha Harvey</p>
-                <p class="book-tooltip-note">Booker Prize winner. 24 hours on a space station — quiet and stunning.</p>
+              <div class="book-info"><p class="book-title">Orbital</p><p class="book-author">Samantha Harvey</p></div>
+              <div class="book-tooltip"><p class="book-tooltip-title">Orbital</p><p class="book-tooltip-author">Samantha Harvey</p><p class="book-tooltip-note">Booker Prize winner. 24 hours on a space station — quiet and stunning.</p></div>
+            </div>
+            <div class="book-item">
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/15121528-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="The Alchemist cover"/>
+              <div class="book-cover-placeholder" style="display:none">THE<br/>ALCHE-<br/>MIST</div>
+              <div class="book-info"><p class="book-title">The Alchemist</p><p class="book-author">Paulo Coelho</p><p class="book-note">reread. the language of the universe is speaking.</p></div>
+              <div class="book-tooltip"><p class="book-tooltip-title">The Alchemist</p><p class="book-tooltip-author">Paulo Coelho</p><p class="book-tooltip-note">reread. the language of the universe is speaking.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEE FULL SHELF TOGGLE -->
+        <button class="shelf-toggle" id="shelfToggle" onclick="toggleShelf()">
+          <span class="shelf-toggle-line"></span>
+          <span class="shelf-toggle-arrow">↓</span>
+          <span class="shelf-toggle-label">see full shelf</span>
+          <span class="shelf-toggle-line"></span>
+        </button>
+
+        <!-- FULL ARCHIVE TIMELINE -->
+        <div class="timeline-body" id="timelineBody">
+          <div class="timeline-inner">
+
+            <!-- 2026 -->
+            <div class="timeline-year-wrap">
+              <button class="timeline-year-btn" onclick="toggleYear('y2026',this)">
+                <span class="timeline-year-label">2026</span>
+                <span class="timeline-year-rule"></span>
+                <span class="timeline-year-count">7 books</span>
+                <span class="timeline-year-arrow">↓</span>
+              </button>
+              <div class="timeline-year-body open" id="y2026">
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>January</p>
+                  <div class="timeline-book"><span class="timeline-book-title">107 Days</span><span class="timeline-book-author">Kamala Harris</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Grown Women</span><span class="timeline-book-author">Sarai Johnson</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Written on the Body</span><span class="timeline-book-author">Jeanette Winterson</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Happiness Becomes You</span><span class="timeline-book-author">Tina Turner</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">My Love Story</span><span class="timeline-book-author">Tina Turner</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>February</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Orbital</span><span class="timeline-book-author">Samantha Harvey</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Alchemist <span class="reread-tag">↺ reread</span></span><span class="timeline-book-author">Paulo Coelho</span></div>
+                </div>
               </div>
             </div>
 
-            <div class="book-item">
-              <img class="book-cover"
-                src="https://covers.openlibrary.org/b/id/15121528-L.jpg"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                alt="The Alchemist cover"/>
-              <div class="book-cover-placeholder" style="display:none">THE<br/>ALCHE-<br/>MIST</div>
-              <div class="book-info">
-                <p class="book-title">The Alchemist</p>
-                <p class="book-author">Paulo Coelho</p>
-                <p class="book-note">reread. the language of the universe is speaking.</p>
-              </div>
-              <div class="book-tooltip">
-                <p class="book-tooltip-title">The Alchemist</p>
-                <p class="book-tooltip-author">Paulo Coelho</p>
-                <p class="book-tooltip-note">reread. the language of the universe is speaking.</p>
+            <!-- 2025 -->
+            <div class="timeline-year-wrap">
+              <button class="timeline-year-btn" onclick="toggleYear('y2025',this)">
+                <span class="timeline-year-label">2025</span>
+                <span class="timeline-year-rule"></span>
+                <span class="timeline-year-count">28 books</span>
+                <span class="timeline-year-arrow">↓</span>
+              </button>
+              <div class="timeline-year-body" id="y2025">
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>January</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Secret Lives of Church Ladies</span><span class="timeline-book-author">Deesha Philyaw</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Vision of Mary McLeod Bethune</span><span class="timeline-book-author">Noliwe Rooks</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>February</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Be My Guest</span><span class="timeline-book-author">Priya Basil</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Walk Through Fire</span><span class="timeline-book-author">Sheila Johnson</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The End of Overeating</span><span class="timeline-book-author">David Kessler</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Experience Economy</span><span class="timeline-book-author">Joseph Pine + James Gilmore</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>March</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Carol / Salt</span><span class="timeline-book-author">Patricia Highsmith</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Their Eyes Were Watching God</span><span class="timeline-book-author">Zora Neale Hurston</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Wanting: The Power of Mimetic Desire</span><span class="timeline-book-author">Luke Burgis</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>April</p>
+                  <div class="timeline-book"><span class="timeline-book-title">What Would the Rockefellers Do?</span><span class="timeline-book-author">Garrett Gunderson</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>June</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Tender is the Night</span><span class="timeline-book-author">F. Scott Fitzgerald</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Courage to be Disliked</span><span class="timeline-book-author">Ichiro Kishimi</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>July</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Garden of Eden</span><span class="timeline-book-author">Ernest Hemingway</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Midnight Library</span><span class="timeline-book-author">Matt Haig</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">A Happy Pocket Full of Money</span><span class="timeline-book-author">David Cameron Gikandi</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>August</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Be Ready When Luck Happens</span><span class="timeline-book-author">Ina Garten</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>September</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Haves and Have-Yachts</span><span class="timeline-book-author">Evan Osnos</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">American Stomach</span><span class="timeline-book-author">Fredrick Kaufman</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The House the Rockefellers Built</span><span class="timeline-book-author">Lee Baldwin Dalzell + Robert F. Dalzell</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">True Prep</span><span class="timeline-book-author">Lisa Birnbach</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>November</p>
+                  <div class="timeline-book"><span class="timeline-book-title">You Can't Hurt Me</span><span class="timeline-book-author">David Goggins</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Becoming Supernatural</span><span class="timeline-book-author">Joe Dispenza</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Empire of the Elite</span><span class="timeline-book-author">Michael M. Grynbaum</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>December</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Sula</span><span class="timeline-book-author">Toni Morrison</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Joy Goddess</span><span class="timeline-book-author">A'Lelia Bundles</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Year of Magical Thinking</span><span class="timeline-book-author">Joan Didion</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Jazz</span><span class="timeline-book-author">Toni Morrison</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Inner Game of Tennis <span class="reread-tag">↺ reread</span></span><span class="timeline-book-author">Timothy Gallwey</span></div>
+                </div>
               </div>
             </div>
+
+            <!-- 2024 -->
+            <div class="timeline-year-wrap">
+              <button class="timeline-year-btn" onclick="toggleYear('y2024',this)">
+                <span class="timeline-year-label">2024</span>
+                <span class="timeline-year-rule"></span>
+                <span class="timeline-year-count">14 books</span>
+                <span class="timeline-year-arrow">↓</span>
+              </button>
+              <div class="timeline-year-body" id="y2024">
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>February</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Creativity Act</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>March</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Big Magic</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Steal Like An Artist</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Show Your Work!</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Keep Going</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>April</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Million Dollar Weekend</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Art of Seduction</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>May</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Unreasonable Hospitality</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Manufacturing Consent</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Survival of the Richest</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>June</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Poverty By America</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Ruthless Elimination of Hurry</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>December</p>
+                  <div class="timeline-book"><span class="timeline-book-title">How To Know A Person</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Greenlights</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Bluest Eye</span><span class="timeline-book-author"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2023 -->
+            <div class="timeline-year-wrap">
+              <button class="timeline-year-btn" onclick="toggleYear('y2023',this)">
+                <span class="timeline-year-label">2023</span>
+                <span class="timeline-year-rule"></span>
+                <span class="timeline-year-count">12 books</span>
+                <span class="timeline-year-arrow">↓</span>
+              </button>
+              <div class="timeline-year-body" id="y2023">
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>January</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Power of Moments</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>February</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Biggest Bluff</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>March</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Four Agreements</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">How to Write An Autobiographical Novel</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>April</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Communion</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>August</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Braiding Sweetgrass</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>September</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Monk Who Sold His Ferrari <span class="reread-tag">↺ reread</span></span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>October</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Tuesdays with Morrie</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">IKIGAI</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Thick and Other Essays</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>November</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Art of Gathering</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>December</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Fortune Cookie Chronicles</span><span class="timeline-book-author"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2022 -->
+            <div class="timeline-year-wrap">
+              <button class="timeline-year-btn" onclick="toggleYear('y2022',this)">
+                <span class="timeline-year-label">2022</span>
+                <span class="timeline-year-rule"></span>
+                <span class="timeline-year-count">10 books</span>
+                <span class="timeline-year-arrow">↓</span>
+              </button>
+              <div class="timeline-year-body" id="y2022">
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>February</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Stillness is Key</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>March</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Will</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Siddhartha</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>April</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Four Seasons</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Multifamily Millions</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>October</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Billionaire Wilderness</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>November</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The New Kings of New York</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Am I Being Too Subtle</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>December</p>
+                  <div class="timeline-book"><span class="timeline-book-title">All About Love <span class="reread-tag">↺ reread</span></span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Inner Game of Tennis</span><span class="timeline-book-author">Timothy Gallwey</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2021 -->
+            <div class="timeline-year-wrap">
+              <button class="timeline-year-btn" onclick="toggleYear('y2021',this)">
+                <span class="timeline-year-label">2021</span>
+                <span class="timeline-year-rule"></span>
+                <span class="timeline-year-count">17 books</span>
+                <span class="timeline-year-arrow">↓</span>
+              </button>
+              <div class="timeline-year-body" id="y2021">
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>January</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Influence</span><span class="timeline-book-author">Robert Cialdini</span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>February</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Energy Codes</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">10% Happier</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>March</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Slight Edge</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Art of War</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Psychology of Money</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Index Fund Investing 101</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>June</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Atomic Habits</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>July</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Subtle Art of Not Giving a F*ck</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>August</p>
+                  <div class="timeline-book"><span class="timeline-book-title">You Can Heal Your Life</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>October</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Bhagavad Gita</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Indistractable</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>November</p>
+                  <div class="timeline-book"><span class="timeline-book-title">Tao Te Ching</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">This is Your Brain on Food</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Energy Bus</span><span class="timeline-book-author"></span></div>
+                </div>
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>December</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Go-Giver</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Can't Hurt Me <span class="reread-tag">↺ reread</span></span><span class="timeline-book-author">David Goggins</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">4 Hour Work Week</span><span class="timeline-book-author"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="timeline-year-wrap">
+              <button class="timeline-year-btn" onclick="toggleYear('y2020',this)">
+                <span class="timeline-year-label">2020</span>
+                <span class="timeline-year-rule"></span>
+                <span class="timeline-year-count">26 books</span>
+                <span class="timeline-year-arrow">↓</span>
+              </button>
+              <div class="timeline-year-body" id="y2020">
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>2020</p>
+                  <div class="timeline-book"><span class="timeline-book-title">$2.00 A Day</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">All About Love <span class="reread-tag">↺ reread</span></span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Death of Ivan Ilyich</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Hurricanes</span><span class="timeline-book-author">Rick Ross</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Shoe Dog</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Speaking of Summer</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Purple Cow</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Invisible Man</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Spook Who Sat By The Door</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">How To Win Friends + Influence People</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">This is Marketing</span><span class="timeline-book-author">Seth Godin</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">We Were Eight Years in Power</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Power of Now</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Ask and It is Given</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Storybrand</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Island</span><span class="timeline-book-author">Aldous Huxley</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">7 Spiritual Laws</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">What You Think of Me Is None of My Business</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Richest Man in Babylon</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Alchemist <span class="reread-tag">↺ reread</span></span><span class="timeline-book-author">Paulo Coelho</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The War of Art</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Why Should White Guys Have All The Fun</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Secret</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Creative Visualization</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Untethered Soul</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Blink</span><span class="timeline-book-author"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2019 -->
+            <div class="timeline-year-wrap">
+              <button class="timeline-year-btn" onclick="toggleYear('y2019',this)">
+                <span class="timeline-year-label">2019</span>
+                <span class="timeline-year-rule"></span>
+                <span class="timeline-year-count">22 books</span>
+                <span class="timeline-year-arrow">↓</span>
+              </button>
+              <div class="timeline-year-body" id="y2019">
+                <div class="timeline-month-block">
+                  <p class="timeline-month-label"><span>—</span>2019</p>
+                  <div class="timeline-book"><span class="timeline-book-title">The Monk Who Sold His Ferrari</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Ruby Fruit Jungle</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">All Marketers Are Liars</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">As A Man Thinketh</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Pimp</span><span class="timeline-book-author">Iceberg Slim</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Start with Why</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Who Owns The Ice House</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Substance of Hope</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Seat of The Soul</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Good to Great</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The 22 Immutable Laws of Marketing</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Alchemist</span><span class="timeline-book-author">Paulo Coelho</span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">How'd You Do It, Truett?</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Secret <span class="reread-tag">↺ reread</span></span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The 50th Law</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Leadership Crisis + the Free Market</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The 5 Dysfunctions of a Team</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Art of Possibility</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Insanely Simple</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">How to Fail At Almost Everything + Still Win Big</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">The Picture of Dorian Gray</span><span class="timeline-book-author"></span></div>
+                  <div class="timeline-book"><span class="timeline-book-title">Fahrenheit 451</span><span class="timeline-book-author"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TOTAL -->
+            <div style="text-align:center;padding:1.5rem 0 .5rem;border-top:1px solid var(--rule);margin-top:.5rem;">
+              <p style="font-family:'IBM Plex Mono',monospace;font-size:.52rem;letter-spacing:.25em;color:var(--bone-faint);">total reads · <span style="color:var(--orange);font-size:.7rem;">136</span> · 2019–2026</p>
+            </div>
+
+            <!-- BOTTOM CLOSE BUTTON -->
+            <button class="shelf-toggle" style="margin-top:1rem;" onclick="toggleShelf()">
+              <span class="shelf-toggle-line"></span>
+              <span class="shelf-toggle-arrow" style="transform:rotate(180deg)">↓</span>
+              <span class="shelf-toggle-label">close shelf</span>
+              <span class="shelf-toggle-line"></span>
+            </button>
+
           </div>
         </div>
       </div>
@@ -1181,6 +1572,7 @@ function sealNote(){
   </footer>
 </div>
 
+
 <script>
 (function(){
   const now = new Date();
@@ -1189,7 +1581,10 @@ function sealNote(){
   const d = now.toISOString().slice(0,10).replace(/-/g,".");
   const msg = "today is " + formatted + ". it will never be again. change is constant.";
   const track = document.getElementById("bannerTrack");
-  if(track) track.textContent = msg + " \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 " + msg;
+  if(track){
+    const repeat = msg + " \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 ";
+    track.textContent = repeat.repeat(6);
+  }
   const updated = document.getElementById("lastUpdated");
   if(updated) updated.textContent = "updated " + d;
 })();
