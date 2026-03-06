@@ -181,8 +181,42 @@ background:var(--orange);
 color:#1a1a1a
 }
 
+.back-to-top{
+  display:none;
+  position:fixed;
+  bottom:1.5rem;
+  right:1.5rem;
+  z-index:999;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.42rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--bone-mid);
+  background:var(--surface);
+  border:1px solid var(--rule);
+  padding:.6rem .9rem;
+  cursor:pointer;
+  transition:opacity .3s, border-color .2s;
+  opacity:0;
+}
+.back-to-top.visible{opacity:1;}
+.back-to-top:hover{border-color:var(--orange);color:var(--orange);}
+
+@media(max-width:768px){
+  .landing-enter:active{
+    background:var(--orange);
+    border-color:var(--orange);
+    color:#1a1a1a;
+  }
+  .back-to-top{display:block;}
+}
+
 /* ── SITE ── */
 .site{display:none;min-height:100vh;flex-direction:column}
+@media(max-width:768px){
+  .site{opacity:0;transition:opacity .4s ease;}
+  .site.visible{opacity:1;}
+}
 .site.visible{display:flex}
 .site-inner{display:flex;flex:1}
 
@@ -253,6 +287,23 @@ color:#1a1a1a
 .dispatch-text{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:1.05rem;line-height:2;color:var(--bone-mid)}
 .dispatch-geo{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.18em;color:var(--bone-faint);margin-top:.85rem}
 
+.envelope-d{background:var(--surface);border:1px solid rgba(240,235,225,.08);position:relative;}
+.envelope-d-torn-top{height:18px;background:var(--base);position:relative;overflow:hidden;}
+.envelope-d-torn-top::after{content:"";position:absolute;bottom:0;left:0;right:0;height:18px;background:var(--surface);clip-path:polygon(0% 100%,2% 20%,5% 80%,8% 10%,11% 70%,14% 5%,17% 65%,20% 15%,23% 75%,26% 0%,29% 60%,32% 20%,35% 80%,38% 5%,41% 70%,44% 15%,47% 75%,50% 0%,53% 65%,56% 20%,59% 80%,62% 10%,65% 70%,68% 0%,71% 65%,74% 15%,77% 75%,80% 5%,83% 70%,86% 20%,89% 80%,92% 10%,95% 70%,98% 15%,100% 60%,100% 100%);}
+.envelope-d-body{padding:1.75rem 2rem 1.5rem;}
+.envelope-d-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem;}
+.envelope-d-to{font-family:"Caveat",cursive;font-size:.95rem;color:var(--bone-faint);line-height:1.6;}
+.envelope-d-stamp{width:42px;height:52px;border:1.5px solid rgba(240,235,225,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;flex-shrink:0;}
+.envelope-d-stamp::before{content:"";position:absolute;inset:3px;border:1px dashed rgba(240,235,225,.1);}
+.envelope-d-stamp-text{font-family:"DM Serif Display",Georgia,serif;font-style:italic;font-size:.8rem;line-height:1;color:var(--bone);}
+.envelope-d-stamp-text span{color:#A8DC00;}
+.envelope-d-stamp-sub{font-family:"IBM Plex Mono",monospace;font-size:.26rem;letter-spacing:.12em;color:var(--bone-faint);margin-top:.2rem;}
+.envelope-d-heading{font-family:"Caveat",cursive;font-size:1.9rem;color:var(--bone);opacity:.88;margin-bottom:1rem;}
+.envelope-d-rule{height:1px;background:rgba(240,235,225,.07);margin:.75rem 0;}
+.envelope-d-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;}
+.envelope-d-from{font-family:"Caveat",cursive;font-size:.95rem;color:var(--bone-faint);}
+.envelope-d-torn-bot{height:18px;background:var(--base);position:relative;overflow:hidden;}
+.envelope-d-torn-bot::before{content:"";position:absolute;top:0;left:0;right:0;height:18px;background:var(--surface);clip-path:polygon(0% 0%,2% 80%,5% 20%,8% 90%,11% 30%,14% 95%,17% 35%,20% 85%,23% 25%,26% 100%,29% 40%,32% 80%,35% 20%,38% 95%,41% 30%,44% 85%,47% 25%,50% 100%,53% 35%,56% 80%,59% 20%,62% 90%,65% 30%,68% 100%,71% 35%,74% 85%,77% 25%,80% 95%,83% 30%,86% 80%,89% 20%,92% 90%,95% 30%,98% 85%,100% 40%,100% 0%);}
 .postcard-wrap{margin-bottom:2.5rem}
 .postcard{background:var(--surface);border:1px solid var(--rule);display:grid;grid-template-columns:1fr 1px 160px;min-height:220px;position:relative;overflow:hidden}
 .postcard::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--orange) 0,var(--orange) 18px,transparent 18px,transparent 26px)}
@@ -262,8 +313,11 @@ color:#1a1a1a
 .postcard-date{font-family:"IBM Plex Mono",monospace;font-size:.48rem;letter-spacing:.15em;color:var(--bone-faint);margin-bottom:1.25rem}
 .postcard-textarea{flex:1;background:transparent;border:none;border-bottom:1px solid var(--rule);padding:.5rem 0;font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.82rem;color:var(--bone);resize:none;outline:none;min-height:70px;line-height:1.8}
 .postcard-textarea::placeholder{color:var(--bone-faint)}
-.postcard-send{display:inline-flex;align-items:center;gap:.6rem;background:var(--orange);border:1px solid var(--orange);padding:.7rem 1.5rem;font-family:"IBM Plex Mono",monospace;font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:#1a1a1a;cursor:pointer;margin-top:1rem;align-self:flex-start;transition:opacity .2s}
-.postcard-send:hover{opacity:.85}
+.postcard-send{display:inline-flex;align-items:center;gap:.6rem;background:var(--orange);border:1px solid var(--orange);padding:.7rem 1.5rem;font-family:"IBM Plex Mono",monospace;font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:#1a1a1a;cursor:pointer;margin-top:1rem;align-self:flex-start;transition:transform .15s ease, opacity .2s;}
+.postcard-send:hover{opacity:.85;transform:translateY(-2px);}
+.postcard-send:active{transform:scale(.96);}
+@keyframes btnPulse{0%{box-shadow:0 0 0 0 rgba(168,220,0,.4)}70%{box-shadow:0 0 0 8px rgba(168,220,0,0)}100%{box-shadow:0 0 0 0 rgba(168,220,0,0)}}
+.postcard-send.sending{animation:btnPulse .6s ease;}
 .postcard-divider{background:var(--rule)}
 .postcard-right{padding:2rem 1.25rem;display:flex;flex-direction:column;justify-content:space-between}
 .postcard-stamp-area{display:flex;justify-content:flex-end}
@@ -801,8 +855,12 @@ color:#1a1a1a
 </style>
 <script>
 function enter(){
-  document.getElementById("landing").style.display="none";
-  document.getElementById("site").classList.add("visible");
+  const landing = document.getElementById("landing");
+  const site = document.getElementById("site");
+  site.classList.add("visible");
+  landing.style.opacity = "0";
+  landing.style.transition = "opacity .3s ease";
+  setTimeout(()=>{ landing.style.display="none"; landing.style.opacity="1"; landing.style.transition=""; }, 300);
   initReveal();
 }
 function leave(){
@@ -835,6 +893,7 @@ function sealNote(){
   const t = document.querySelector(".postcard-textarea");
   const btn = document.querySelector(".postcard-send");
   if(!t.value.trim()) return;
+  btn.classList.add("sending");
   btn.textContent = "sending...";
   btn.disabled = true;
   fetch("https://formspree.io/f/mgonwjjj", {
@@ -844,26 +903,37 @@ function sealNote(){
   })
   .then(res => {
     if(res.ok){
-      btn.textContent = "left. ✓";
+      btn.textContent = "received :)";
+      btn.classList.remove("sending");
       t.value = "";
       t.disabled = true;
       t.style.opacity = ".4";
       setTimeout(()=>{
-        btn.textContent = "leave it here →";
+        btn.textContent = "seal & send →";
         btn.disabled = false;
         t.disabled = false;
         t.style.opacity = "1";
       }, 3000);
     } else {
       btn.textContent = "try again →";
+      btn.classList.remove("sending");
       btn.disabled = false;
     }
   })
   .catch(()=>{
     btn.textContent = "try again →";
+    btn.classList.remove("sending");
     btn.disabled = false;
   });
 }
+
+// back to top
+window.addEventListener("scroll", function(){
+  const btn = document.getElementById("backToTop");
+  if(!btn) return;
+  if(window.scrollY > 400){ btn.classList.add("visible"); }
+  else { btn.classList.remove("visible"); }
+});
 </script>
 </head>
 <body>
@@ -1650,9 +1720,9 @@ function sealNote(){
       <!-- PLACES -->
       <div class="section reveal">
         <div class="section-header">
-          <span class="section-title">places · filed from wherever</span>
+          <span class="section-title">places worth returning to</span>
         </div>
-        <p class="places-intro">A running log of spots worth returning to.</p>
+        <p class="places-intro">a running log.</p>
         <div class="place-row">
           <div class="place-geo">33.47°N<br/>81.97°W</div>
           <div class="place-body"><p class="place-name">Augusta 20</p><p class="place-type">coffee · Greenville, SC</p><p class="place-note">home away from home.</p></div>
@@ -1696,67 +1766,32 @@ function sealNote(){
       <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
 
       <div class="postcard-wrap reveal" id="note">
-        <div class="postcard">
-          <div class="postcard-left">
-            <p class="postcard-label">leave a note</p>
-            <p class="postcard-prompt">tell me a secret.</p>
-            <p class="postcard-date">week of 2026.03.03</p>
-            <textarea class="postcard-textarea" placeholder="write something here..."></textarea>
-            <button class="postcard-send" onclick="sealNote()">leave it here &nbsp;&rarr;</button>
-          </div>
-          <div class="postcard-divider"></div>
-          <div class="postcard-right">
-            <div class="postcard-stamp-area">
-              <!-- Static full stamp logo in postcard, no animation, smaller -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="58" height="58" opacity=".4">
-                <defs>
-                  <filter id="pc-roughen" x="-5%" y="-5%" width="110%" height="110%">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="3" result="noise"/>
-                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
-                  </filter>
-                  <filter id="pc-stamp" x="-5%" y="-5%" width="110%" height="110%">
-                    <feTurbulence type="turbulence" baseFrequency="0.065" numOctaves="3" seed="8" result="noise"/>
-                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
-                  </filter>
-                </defs>
-                <circle cx="150" cy="150" r="138" fill="none" stroke="#F0EBE1" stroke-width="4.5" filter="url(#pc-roughen)" opacity=".88"/>
-                <path id="pcTopArc" d="M 38,150 A 112,112 0 0,1 262,150" fill="none"/>
-                <text font-family="'Space Mono',monospace" font-size="13.5" font-weight="700" fill="#F0EBE1" letter-spacing="4.5" opacity=".85" filter="url(#pc-roughen)">
-                  <textPath href="#pcTopArc" startOffset="50%" text-anchor="middle">WORLDWIDEROCKY</textPath>
-                </text>
-                <path id="pcBotArc" d="M 38,150 A 112,112 0 0,0 262,150" fill="none"/>
-                <text font-family="'Space Mono',monospace" font-size="11" font-weight="400" fill="#F0EBE1" letter-spacing="3.5" opacity=".7" filter="url(#pc-roughen)">
-                  <textPath href="#pcBotArc" startOffset="50%" text-anchor="middle">EST. 2024 · GSP · GLOBAL</textPath>
-                </text>
-                <rect x="22" y="147" width="10" height="2" rx="1" fill="#F0EBE1" opacity=".55" transform="rotate(-2,27,148)"/>
-                <rect x="268" y="147" width="10" height="2" rx="1" fill="#F0EBE1" opacity=".55" transform="rotate(2,273,148)"/>
-                <circle cx="150" cy="150" r="120" fill="none" stroke="#F0EBE1" stroke-width="1.5" filter="url(#pc-roughen)" opacity=".35"/>
-                <text x="150" y="162"
-                  font-family="'DM Serif Display',Georgia,serif"
-                  font-size="82" font-style="italic"
-                  text-anchor="middle" dominant-baseline="middle"
-                  letter-spacing="-3" filter="url(#pc-stamp)">
-                  <tspan fill="#F0EBE1" opacity=".92">ww</tspan><tspan fill="#A8DC00" opacity=".96">R</tspan>
-                </text>
-                <text x="150" y="196"
-                  font-family="'Space Mono',monospace"
-                  font-size="9.5" fill="#F0EBE1"
-                  text-anchor="middle" letter-spacing="2.5"
-                  opacity=".5" filter="url(#pc-roughen)">34.85°N · 82.39°W</text>
-              </svg>
+        <div class="envelope-d">
+          <div class="envelope-d-torn-top"></div>
+          <div class="envelope-d-body">
+            <div class="envelope-d-top">
+              <div class="envelope-d-to">to: worldwiderocky<br/>from: you</div>
+              <div class="envelope-d-stamp">
+                <p class="envelope-d-stamp-text">ww<span>R</span></p>
+                <p class="envelope-d-stamp-sub">GSP · 2026</p>
+              </div>
             </div>
-            <div class="postcard-lines">
-              <div class="postcard-line"></div>
-              <div class="postcard-line"></div>
-              <div class="postcard-line"></div>
+            <p class="envelope-d-heading">tell me something good.</p>
+            <div class="envelope-d-rule"></div>
+            <textarea class="postcard-textarea" placeholder="write something..."></textarea>
+            <div class="envelope-d-bottom">
+              <p class="envelope-d-from">wwR · 2026</p>
+              <button class="postcard-send" onclick="sealNote()">seal &amp; send &nbsp;&rarr;</button>
             </div>
-            <p class="postcard-address">worldwiderocky.com<br/>GSP · Greenville, SC<br/>34.8526 N · 82.3940 W</p>
           </div>
+          <div class="envelope-d-torn-bot"></div>
         </div>
       </div>
 
     </main>
   </div>
+
+  <button id="backToTop" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ top</button>
 
   <footer style="margin-left:var(--sidebar);border-top:1px solid var(--rule);padding:3rem 4rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;position:relative;z-index:1;">
     <p style="font-family:'Caveat',cursive;font-size:1.8rem;color:var(--bone);opacity:.65;letter-spacing:.01em;">always with love,</p>
