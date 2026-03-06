@@ -49,7 +49,7 @@
 </script>
 
 <!-- Favicon using inline SVG -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%232B2B2B'/%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%23F0EBE1' stroke-width='4'/%3E%3Ctext x='100' y='108' font-family='Georgia,serif' font-size='72' font-style='italic' text-anchor='middle' dominant-baseline='middle' letter-spacing='-2'%3E%3Ctspan fill='%23F0EBE1'%3Eww%3C/tspan%3E%3Ctspan fill='%23C8FF00'%3ER%3C/tspan%3E%3C/text%3E%3C/svg%3E"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%232B2B2B'/%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%23F0EBE1' stroke-width='4'/%3E%3Ctext x='100' y='108' font-family='Georgia,serif' font-size='72' font-style='italic' text-anchor='middle' dominant-baseline='middle' letter-spacing='-2'%3E%3Ctspan fill='%23F0EBE1'%3Eww%3C/tspan%3E%3Ctspan fill='%23A8DC00'%3ER%3C/tspan%3E%3C/text%3E%3C/svg%3E"/>
 
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Caveat:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
@@ -67,7 +67,7 @@ box-sizing:border-box
 --bone:#F0EBE1;
 --bone-mid:rgba(240,235,225,.6);
 --bone-faint:rgba(240,235,225,.28);
---orange:#C8FF00;
+--orange:#A8DC00;
 --rule:rgba(240,235,225,.08);
 --sidebar:256px;
 }
@@ -100,7 +100,7 @@ width:100%
 .landing-bg{
 position:absolute;
 inset:0;
-background:radial-gradient(ellipse 80% 60% at 50% 55%,rgba(200,255,0,.04) 0%,transparent 70%);
+background:radial-gradient(ellipse 80% 60% at 50% 55%,rgba(168,220,0,.04) 0%,transparent 70%);
 pointer-events:none
 }
 
@@ -216,7 +216,7 @@ color:#1a1a1a
 .sidebar-link:hover{color:var(--bone-mid)}
 
 /* ── MAIN ── */
-.main{margin-left:var(--sidebar);flex:1;min-height:100vh;padding:3rem 4rem 5rem;max-width:none}
+.main{margin-left:var(--sidebar);flex:1;min-height:100vh;padding:3rem 4rem 2rem;max-width:none}
 
 .page-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end}
 .page-stamp{font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.4em;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem}
@@ -261,7 +261,7 @@ color:#1a1a1a
   content:"";
   flex:1;
   height:1px;
-  background:linear-gradient(90deg, transparent, rgba(200,255,0,.5), transparent);
+  background:linear-gradient(90deg, transparent, rgba(168,220,0,.5), transparent);
   animation:dividerGlow 3s ease-in-out infinite;
 }
 .section-divider::after{
@@ -379,7 +379,7 @@ color:#1a1a1a
   left: 0;
   bottom: calc(100% + 8px);
   background: var(--lift);
-  border: 1px solid rgba(200,255,0,.2);
+  border: 1px solid rgba(168,220,0,.2);
   padding: .85rem 1rem;
   width: 220px;
   z-index: 10;
@@ -435,7 +435,7 @@ color:#1a1a1a
 }
 .film-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(200,255,0,.3);
+  border-color: rgba(168,220,0,.3);
 }
 .film-poster-wrap {
   position: relative;
@@ -531,7 +531,7 @@ color:#1a1a1a
   color: var(--orange);
   opacity: .6;
   margin-top: .35rem;
-  border: 1px solid rgba(200,255,0,.2);
+  border: 1px solid rgba(168,220,0,.2);
   padding: .2rem .5rem;
 }
 
@@ -587,7 +587,7 @@ color:#1a1a1a
 .timeline-year-btn:hover .timeline-year-label{opacity:1;}
 .timeline-year-btn:hover .timeline-year-arrow{color:var(--orange);}
 .timeline-year-label{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--orange);opacity:.75;flex-shrink:0;transition:opacity .2s;}
-.timeline-year-rule{flex:1;height:1px;background:rgba(200,255,0,.12);}
+.timeline-year-rule{flex:1;height:1px;background:rgba(168,220,0,.12);}
 .timeline-year-count{font-family:"IBM Plex Mono",monospace;font-size:.48rem;letter-spacing:.2em;color:var(--bone-faint);flex-shrink:0;}
 .timeline-year-arrow{font-family:"IBM Plex Mono",monospace;font-size:.55rem;color:var(--bone-faint);transition:transform .3s ease,color .2s;flex-shrink:0;}
 .timeline-year-btn.open .timeline-year-arrow{transform:rotate(180deg);}
@@ -619,8 +619,8 @@ color:#1a1a1a
 .crescendo-title{font-family:"IBM Plex Sans",sans-serif;font-weight:700;font-size:1.2rem;color:var(--bone);margin-bottom:.3rem}
 .crescendo-desc{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.9rem;color:var(--bone-mid);line-height:1.75}
 .crescendo-geo{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.14em;color:var(--bone-faint);margin-top:.45rem}
-.crescendo-btn{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);text-decoration:none;border:1px solid rgba(200,255,0,.3);padding:.75rem 1.5rem;flex-shrink:0;transition:background .2s}
-.crescendo-btn:hover{background:rgba(200,255,0,.08)}
+.crescendo-btn{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);text-decoration:none;border:1px solid rgba(168,220,0,.3);padding:.75rem 1.5rem;flex-shrink:0;transition:background .2s}
+.crescendo-btn:hover{background:rgba(168,220,0,.08)}
 
 /* ── PLACES ── */
 .places-intro{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.92rem;font-style:italic;color:var(--bone-mid);line-height:1.85;margin-bottom:1.25rem}
@@ -671,7 +671,7 @@ color:#1a1a1a
 }
 .banner-track{
   white-space:nowrap;
-  animation:scrollText 55s linear infinite;
+  animation:scrollText 70s linear infinite;
   font-family:"IBM Plex Mono",monospace;
   font-size:.6rem;
   letter-spacing:.2em;
@@ -725,8 +725,8 @@ color:#1a1a1a
   inset:0;
   pointer-events:none;
   z-index:0;
-  background: radial-gradient(ellipse 70% 50% at 30% 60%, rgba(200,255,0,.03) 0%, transparent 70%),
-              radial-gradient(ellipse 60% 40% at 70% 30%, rgba(200,255,0,.02) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 50% at 30% 60%, rgba(168,220,0,.03) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 40% at 70% 30%, rgba(168,220,0,.02) 0%, transparent 70%);
   animation: glowShift 12s ease-in-out infinite;
   background-size: 200% 200%;
 }
@@ -871,7 +871,7 @@ function sealNote(){
           font-size="82" font-style="italic"
           text-anchor="middle" dominant-baseline="middle"
           letter-spacing="-3" filter="url(#stamp-f)">
-          <tspan fill="#F0EBE1" opacity=".92">ww</tspan><tspan fill="#C8FF00" opacity=".96">R</tspan>
+          <tspan fill="#F0EBE1" opacity=".92">ww</tspan><tspan fill="#A8DC00" opacity=".96">R</tspan>
         </text>
         <text x="150" y="196"
           font-family="'Space Mono',monospace"
@@ -929,7 +929,7 @@ function sealNote(){
             font-size="82" font-style="italic"
             text-anchor="middle" dominant-baseline="middle"
             letter-spacing="-3" filter="url(#sb-stamp)">
-            <tspan fill="#F0EBE1" opacity=".92">ww</tspan><tspan fill="#C8FF00" opacity=".96">R</tspan>
+            <tspan fill="#F0EBE1" opacity=".92">ww</tspan><tspan fill="#A8DC00" opacity=".96">R</tspan>
           </text>
           <text x="150" y="196"
             font-family="'Space Mono',monospace"
@@ -1638,7 +1638,7 @@ function sealNote(){
                   font-size="82" font-style="italic"
                   text-anchor="middle" dominant-baseline="middle"
                   letter-spacing="-3" filter="url(#pc-stamp)">
-                  <tspan fill="#F0EBE1" opacity=".92">ww</tspan><tspan fill="#C8FF00" opacity=".96">R</tspan>
+                  <tspan fill="#F0EBE1" opacity=".92">ww</tspan><tspan fill="#A8DC00" opacity=".96">R</tspan>
                 </text>
                 <text x="150" y="196"
                   font-family="'Space Mono',monospace"
@@ -1687,7 +1687,7 @@ function sealNote(){
   const msg = "today is " + formatted + ". it will never be again. change is constant.";
   const track = document.getElementById("bannerTrack");
   if(track){
-    const repeat = msg + " \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 ";
+    const repeat = msg + " \u00a0\u00a0 // \u00a0\u00a0 ";
     track.textContent = repeat.repeat(6);
   }
   const updated = document.getElementById("lastUpdated");
