@@ -51,7 +51,7 @@
 <!-- Favicon using inline SVG -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%232B2B2B'/%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%23F0EBE1' stroke-width='4'/%3E%3Ctext x='100' y='108' font-family='Georgia,serif' font-size='72' font-style='italic' text-anchor='middle' dominant-baseline='middle' letter-spacing='-2'%3E%3Ctspan fill='%23F0EBE1'%3Eww%3C/tspan%3E%3Ctspan fill='%23A8DC00'%3ER%3C/tspan%3E%3C/text%3E%3C/svg%3E"/>
 
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Caveat:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Caveat:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&family=Spectral:ital,wght@0,300;1,300&display=swap" rel="stylesheet"/>
 <style>
 
 *,*::before,*::after{
@@ -285,11 +285,17 @@ color:#1a1a1a
 .page-updated-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);opacity:.7;flex-shrink:0}
 .page-header-right{text-align:right}
 
-.dispatch{background:var(--surface);padding:1.75rem 2rem;margin-bottom:2.5rem;border-left:2px solid var(--orange)}
-.dispatch-label{font-family:"IBM Plex Mono",monospace;font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--orange);opacity:.8;margin-bottom:.75rem}
-.dispatch-question{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:.9rem;color:var(--bone-faint);font-style:italic;margin-bottom:.5rem}
-.dispatch-text{font-family:"IBM Plex Sans",sans-serif;font-weight:300;font-size:1.05rem;line-height:2;color:var(--bone-mid)}
-.dispatch-geo{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.18em;color:var(--bone-faint);margin-top:.85rem}
+.dispatch{background:#1a1a14;border:1px solid rgba(240,235,225,.07);position:relative;margin-bottom:2.5rem;box-shadow:4px 6px 24px rgba(0,0,0,.35);}
+.dispatch::after{content:"";position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 28px 28px 0;border-color:transparent var(--base) transparent transparent;}
+.dispatch::before{content:"";position:absolute;top:0;right:0;width:28px;height:28px;background:rgba(168,220,0,.12);clip-path:polygon(100% 0,0 0,100% 100%);z-index:1;}
+.dispatch-inner{padding:1.75rem;}
+.dispatch-label{font-family:"IBM Plex Mono",monospace;font-size:.35rem;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);opacity:.55;margin-bottom:.5rem;}
+.dispatch-rule{height:1px;background:linear-gradient(90deg,rgba(168,220,0,.3),transparent);margin-bottom:1rem;}
+.dispatch-question{font-family:"Caveat",cursive;font-size:1.65rem;color:var(--bone);opacity:.88;line-height:1.25;margin-bottom:.85rem;}
+.dispatch-text{font-family:"Spectral",serif;font-weight:300;font-style:italic;font-size:.88rem;color:var(--bone-mid);line-height:1.9;background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(240,235,225,.035) 27px,rgba(240,235,225,.035) 28px);background-size:100% 28px;}
+.dispatch-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;padding-top:.75rem;border-top:1px solid rgba(240,235,225,.06);}
+.dispatch-geo{font-family:"IBM Plex Mono",monospace;font-size:.32rem;letter-spacing:.2em;color:var(--bone-faint);}
+.dispatch-tag{font-family:"IBM Plex Mono",monospace;font-size:.32rem;letter-spacing:.2em;color:var(--lime);opacity:.5;}
 
 .envelope-d{background:var(--surface);border:1px solid rgba(240,235,225,.08);position:relative;}
 .envelope-d-torn-top{height:18px;background:var(--base);position:relative;overflow:hidden;}
@@ -1262,10 +1268,16 @@ window.addEventListener("scroll", function(){
 
 
       <div class="dispatch reveal">
-        <p class="dispatch-label">notes from here</p>
-        <p class="dispatch-question">the soul of the world</p>
-        <p class="dispatch-text">revisiting the idea that there is one language of the universe, something all beings can understand, after rereading The Alchemist. still appreciating the quiet after the vipassana course.</p>
-        <p class="dispatch-geo">GSP · 2026.03.02 · wwR</p>
+        <div class="dispatch-inner">
+          <p class="dispatch-label">notes from here</p>
+          <div class="dispatch-rule"></div>
+          <p class="dispatch-question">love = authenticity?</p>
+          <p class="dispatch-text">most religions and thinkers agree — love is the highest vibration. but i've been sitting with an argument that authenticity supersedes it. can you even separate them? love is an action. authenticity is a quality. maybe one is the condition for the other.</p>
+          <div class="dispatch-bottom">
+            <p class="dispatch-geo">GSP · 2026.03 · wwR</p>
+            <p class="dispatch-tag">dispatch</p>
+          </div>
+        </div>
       </div>
 
       <div class="section-divider"><span class="section-divider-mark">· · ·</span></div>
