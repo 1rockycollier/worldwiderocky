@@ -292,7 +292,7 @@ color:#1a1a1a
 .dispatch-label{font-family:"IBM Plex Mono",monospace;font-size:.35rem;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);opacity:.55;margin-bottom:.5rem;}
 .dispatch-rule{height:1px;background:linear-gradient(90deg,rgba(168,220,0,.3),transparent);margin-bottom:1rem;}
 .dispatch-question{font-family:"Caveat",cursive;font-size:1.65rem;color:var(--bone);opacity:.88;line-height:1.25;margin-bottom:.85rem;}
-.dispatch-text{font-family:"Spectral",serif;font-weight:300;font-style:italic;font-size:.88rem;color:var(--bone-mid);line-height:1.9;background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(240,235,225,.035) 27px,rgba(240,235,225,.035) 28px);background-size:100% 28px;}
+.dispatch-text{font-family:"Spectral",serif;font-weight:300;font-style:italic;font-size:.88rem;color:var(--bone-mid);line-height:28px;background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(240,235,225,.05) 27px,rgba(240,235,224,.05) 28px);background-size:100% 28px;}
 .dispatch-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;padding-top:.75rem;border-top:1px solid rgba(240,235,225,.06);}
 .dispatch-geo{font-family:"IBM Plex Mono",monospace;font-size:.32rem;letter-spacing:.2em;color:var(--bone-faint);}
 .dispatch-tag{font-family:"IBM Plex Mono",monospace;font-size:.32rem;letter-spacing:.2em;color:var(--lime);opacity:.5;}
@@ -1324,19 +1324,19 @@ window.addEventListener("scroll", function(){
             <p class="book-col-label">now reading</p>
             <div class="book-col-books">
             <div class="book-item">
-              <img class="book-cover" src="https://covers.openlibrary.org/b/id/6948932-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Rock My Soul cover"/>
-              <div class="book-cover-placeholder" style="display:none">ROCK<br/>MY SOUL</div>
-              <div class="book-info"><p class="book-title">Rock My Soul</p><p class="book-author">bell hooks</p></div>
-              <div class="book-tooltip"><p class="book-tooltip-title">Rock My Soul</p><p class="book-tooltip-author">bell hooks</p><p class="book-tooltip-note">Black people and self-esteem. Heavy and necessary.</p></div>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/695464-L.jpg" onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}" alt="Sisters of the Yam cover"/>
+              <div class="book-cover-placeholder" style="display:none">SISTERS<br/>OF THE<br/>YAM</div>
+              <div class="book-info"><p class="book-title">Sisters of the Yam</p><p class="book-author">bell hooks</p></div>
+              <div class="book-tooltip"><p class="book-tooltip-title">Sisters of the Yam</p><p class="book-tooltip-author">bell hooks</p><p class="book-tooltip-note">Black women and self-recovery. hooks at her most personal.</p></div>
             </div>
             <div class="book-item">
-              <img class="book-cover" src="https://covers.openlibrary.org/b/id/6790980-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Giovanni's Room cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/6790980-L.jpg" onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}" alt="Giovanni's Room cover"/>
               <div class="book-cover-placeholder" style="display:none">GIOV-<br/>ANNI'S<br/>ROOM</div>
               <div class="book-info"><p class="book-title">Giovanni's Room</p><p class="book-author">James Baldwin</p></div>
               <div class="book-tooltip"><p class="book-tooltip-title">Giovanni's Room</p><p class="book-tooltip-author">James Baldwin</p><p class="book-tooltip-note">Baldwin on desire, shame, and the cost of running from yourself.</p></div>
             </div>
             <div class="book-item">
-              <img class="book-cover" src="https://covers.openlibrary.org/b/id/38371-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Dust Tracks on a Road cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/38371-L.jpg" onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}" alt="Dust Tracks on a Road cover"/>
               <div class="book-cover-placeholder" style="display:none">DUST<br/>TRACKS</div>
               <div class="book-info"><p class="book-title">Dust Tracks on a Road</p><p class="book-author">Zora Neale Hurston</p></div>
               <div class="book-tooltip"><p class="book-tooltip-title">Dust Tracks on a Road</p><p class="book-tooltip-author">Zora Neale Hurston</p><p class="book-tooltip-note">Hurston's autobiography. She lived on her own terms — period.</p></div>
@@ -1348,16 +1348,22 @@ window.addEventListener("scroll", function(){
             <p class="book-col-label">up next</p>
             <div class="book-col-books">
             <div class="book-item">
-              <img class="book-cover" src="https://covers.openlibrary.org/b/id/14813438-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="East of Eden cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/14813438-L.jpg" onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}" alt="East of Eden cover"/>
               <div class="book-cover-placeholder" style="display:none">EAST<br/>OF<br/>EDEN</div>
               <div class="book-info"><p class="book-title">East of Eden</p><p class="book-author">John Steinbeck</p></div>
               <div class="book-tooltip"><p class="book-tooltip-title">East of Eden</p><p class="book-tooltip-author">John Steinbeck</p><p class="book-tooltip-note">The big one. Timshel — thou mayest.</p></div>
             </div>
             <div class="book-item">
-              <img class="book-cover" src="https://covers.openlibrary.org/b/id/22510-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Salvation cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/22510-L.jpg" onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}" alt="Salvation cover"/>
               <div class="book-cover-placeholder" style="display:none">SALV-<br/>ATION</div>
               <div class="book-info"><p class="book-title">Salvation</p><p class="book-author">bell hooks</p></div>
               <div class="book-tooltip"><p class="book-tooltip-title">Salvation</p><p class="book-tooltip-author">bell hooks</p><p class="book-tooltip-note">On Black people and love. A continuation of the hooks canon.</p></div>
+            </div>
+            <div class="book-item">
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/14813216-L.jpg" onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}" alt="The Catcher in the Rye cover"/>
+              <div class="book-cover-placeholder" style="display:none">CATCHER<br/>IN THE<br/>RYE</div>
+              <div class="book-info"><p class="book-title">The Catcher in the Rye</p><p class="book-author">J.D. Salinger</p></div>
+              <div class="book-tooltip"><p class="book-tooltip-title">The Catcher in the Rye</p><p class="book-tooltip-author">J.D. Salinger</p><p class="book-tooltip-note">Holden and the cost of seeing through everything.</p></div>
             </div>
             </div>
           </div>
@@ -1366,13 +1372,19 @@ window.addEventListener("scroll", function(){
             <p class="book-col-label">recently finished</p>
             <div class="book-col-books">
             <div class="book-item">
-              <img class="book-cover" src="https://covers.openlibrary.org/b/id/14829832-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Orbital cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/6948932-L.jpg" onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}" alt="Rock My Soul cover"/>
+              <div class="book-cover-placeholder" style="display:none">ROCK<br/>MY SOUL</div>
+              <div class="book-info"><p class="book-title">Rock My Soul</p><p class="book-author">bell hooks</p></div>
+              <div class="book-tooltip"><p class="book-tooltip-title">Rock My Soul</p><p class="book-tooltip-author">bell hooks</p><p class="book-tooltip-note">Black people and self-esteem. Heavy and necessary.</p></div>
+            </div>
+            <div class="book-item">
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/14829832-L.jpg" onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}" alt="Orbital cover"/>
               <div class="book-cover-placeholder" style="display:none">ORBI-<br/>TAL</div>
               <div class="book-info"><p class="book-title">Orbital</p><p class="book-author">Samantha Harvey</p></div>
               <div class="book-tooltip"><p class="book-tooltip-title">Orbital</p><p class="book-tooltip-author">Samantha Harvey</p><p class="book-tooltip-note">Booker Prize winner. 24 hours on a space station — quiet and stunning.</p></div>
             </div>
             <div class="book-item">
-              <img class="book-cover" src="https://covers.openlibrary.org/b/id/15121528-L.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="The Alchemist cover"/>
+              <img class="book-cover" src="https://covers.openlibrary.org/b/id/15121528-L.jpg" onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}" alt="The Alchemist cover"/>
               <div class="book-cover-placeholder" style="display:none">THE<br/>ALCHE-<br/>MIST</div>
               <div class="book-info"><p class="book-title">The Alchemist</p><p class="book-author">Paulo Coelho</p></div>
               <div class="book-tooltip"><p class="book-tooltip-title">The Alchemist</p><p class="book-tooltip-author">Paulo Coelho</p><p class="book-tooltip-note">reread. the language of the universe is speaking.</p></div>
@@ -1790,7 +1802,7 @@ window.addEventListener("scroll", function(){
             <div class="film-poster-wrap">
               <img class="film-poster"
                 src="https://media.themoviedb.org/t/p/w600_and_h900_face/jbFEESMVbpJU8IjZBjiWGJdEsxR.jpg"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}"
                 alt="EDEN poster"/>
               <div class="film-poster-fallback" style="display:none">EDEN</div>
               <div class="film-overlay">
@@ -1810,7 +1822,7 @@ window.addEventListener("scroll", function(){
             <div class="film-poster-wrap">
               <img class="film-poster"
                 src="https://media.themoviedb.org/t/p/w600_and_h900_face/2LquGwEhbg3soxSCs9VNyh5VJd9.jpg"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}"
                 alt="Portrait of a Lady on Fire poster"/>
               <div class="film-poster-fallback" style="display:none">PORTRAIT OF A LADY ON FIRE</div>
               <div class="film-overlay">
@@ -1830,7 +1842,7 @@ window.addEventListener("scroll", function(){
             <div class="film-poster-wrap">
               <img class="film-poster"
                 src="https://media.themoviedb.org/t/p/w600_and_h900_face/kQs6keheMwCxJxrzV83VUwFtHkB.jpg"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                onerror="if(this){this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'}"
                 alt="Anatomy of a Fall poster"/>
               <div class="film-poster-fallback" style="display:none">ANATOMY OF A FALL</div>
               <div class="film-overlay">
